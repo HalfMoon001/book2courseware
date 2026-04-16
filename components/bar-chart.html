@@ -1,0 +1,23 @@
+<!--
+  柱状图 · 把数据放进 slide-col 里
+  占位符：
+    {{BARS}}       由若干 bar-item 组成
+    {{CAPTION}}    图注（下方小字）
+
+  每个 bar-item 模板（height 以像素为单位，按最大 260px 线性比例）：
+    <div class="bar-item">
+      <div class="bar-rect" style="height:{{PX}}px; background: linear-gradient(180deg, {{COLOR_TOP}}, {{COLOR_BOT}});">{{VALUE_LABEL}}</div>
+      <div class="bar-label">{{BAR_LABEL}}</div>
+    </div>
+
+  颜色组合建议：
+    蓝：#4a90d9 → #3a7bc8
+    绿：#5a9e6f → #4a8e5f
+    金：#c8880a → #b87800
+    红：#e06b6b → #d05b5b
+    紫：#7b68ee → #6b58de
+-->
+<div class="bar-chart">
+  {{BARS}}
+</div>
+<div style="text-align:center;font-size:18px;color:#999;margin-top:5px;">{{CAPTION}}</div>

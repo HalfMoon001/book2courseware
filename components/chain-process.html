@@ -1,0 +1,14 @@
+<!--
+  流程链 · 横向 step → step → step，适合因果链、事件顺序、算法流程
+  占位符：
+    {{STEPS}}   由若干 chain-step 组成，之间用 chain-arrow 分隔
+
+  单步模板（COLOR: blue|gold|green|red|purple）：
+    <div class="chain-step step-{{COLOR}}">{{STEP_TEXT}}</div>
+    <span class="chain-arrow">→</span>
+
+  一般规律：前一步蓝，中间金，最后步红/绿表示结果
+-->
+<div class="chain-box">
+  {{STEPS}}
+</div>

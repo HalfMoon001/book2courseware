@@ -1,0 +1,64 @@
+<!--
+  小游戏页 · 判断/配对类（状态机 + 反馈）
+
+  适用场景：
+    - 判断题：3 道独立判断，每题 2-4 个选项
+    - 配对题：6 道"场景-答案"匹配，每题 4-6 个选项
+    - 分类题：把 N 个物品分到 K 个类别
+
+  核心约定：
+    - 每个可答题放在 <div class="game-card" data-id="X" data-correct="KEY">...</div>
+    - 答案按钮 class="game-opt-btn" 或 class="game-btn"
+    - 按钮 onclick="gamePick(this, 'KEY')" —— KEY 要和某个 data-correct 匹配
+    - 页面底部放 <span id="game-score">0</span> 和 <div id="game-feedback">...</div>
+    - shell/scripts.js 里的 gamePick() 会自动处理对错、计分、高亮正确答案、完成提示
+
+  占位符：
+    {{SLIDE_INDEX}}  · slide 编号
+    {{GAME_TITLE}}   · 游戏标题（前缀建议加 🎮）
+    {{GAME_SUBTITLE}} · 副标题
+    {{CARDS}}        · game-card 列表
+    {{TOTAL}}        · 总题数
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">🎮 {{GAME_TITLE}}</div>
+  <div class="slide-subtitle">{{GAME_SUBTITLE}}</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; flex:1; padding:5px;">
+    {{CARDS}}
+  </div>
+  <div id="game-feedback" style="text-align:center; font-size:22px; margin-top:10px;">
+    💡 已答 <span id="game-score" style="color:var(--gold); font-weight:bold;">0</span> / {{TOTAL}} 题
+  </div>
+</div>
+
+<!--
+  ========== game-card 模板 ==========
+  拷贝 N 份，改 data-id / data-correct / 标签内容 / 按钮集合。
+  至少要 3 道题，最多 6 道题（否则页面挤）。
+  按钮选项要相同（至少 4 个，最多 6 个）——所有题目共享同一组选项。
+
+  <div class="game-card" data-id="1" data-correct="KEY_A">
+    <div class="game-card-label">
+      <span class="emoji">🔥</span>
+      场景描述
+    </div>
+    <div class="game-opts">
+      <button class="game-opt-btn" onclick="gamePick(this,'KEY_A')">选项 A</button>
+      <button class="game-opt-btn" onclick="gamePick(this,'KEY_B')">选项 B</button>
+      <button class="game-opt-btn" onclick="gamePick(this,'KEY_C')">选项 C</button>
+      <button class="game-opt-btn" onclick="gamePick(this,'KEY_D')">选项 D</button>
+    </div>
+  </div>
+
+  ========== 触发规则 ==========
+  课件至少要 1 个小游戏（每个学科、每章都要）。超过 15 页的课件建议 2 个游戏。
+  游戏适合以下知识点：
+    - 应用场景配对（如：电磁波类型 / 化学反应类型 / 生态系统）
+    - 规则判断（如：右手定则 / 受力分析方向 / 化学方程式配平）
+    - 分类（如：六大营养素 / 岩石分类 / 能量转换）
+    - 顺序判断（如：生命周期阶段 / 地质年代）
+
+  不适合：
+    - 纯计算题（用 mcq-quiz 代替）
+    - 开放性问题（无唯一答案）
+-->

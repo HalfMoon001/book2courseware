@@ -1,0 +1,24 @@
+<!--
+  选择题页 · 一页放 1-3 道单选题
+  点击选项后：正确高亮绿色 + ✅；错误高亮红色 + ❌ 且自动高亮正确答案
+  占位符：
+    {{SLIDE_INDEX}}   slide 编号
+    {{TITLE}}         页标题
+    {{QUESTIONS}}     题目 HTML 块序列
+
+  每道题的 HTML 模板：
+    <div class="info-card" style="font-size:22px;margin-top:8px;">
+      <b>📝 题目 N：</b>{{QUESTION_TEXT}}<br>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">A. {{OPTION_A}}</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'correct')">B. {{OPTION_B}}</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">C. {{OPTION_C}}</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">D. {{OPTION_D}}</label>
+    </div>
+  正确选项的 onclick 填 'correct'，其他填 'wrong'。
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{TITLE}}</div>
+  <div style="max-width:900px;margin:0 auto;">
+    {{QUESTIONS}}
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<!--
+  对比两栏页 · 左蓝右红两张卡片对比两种事物
+  占位符：
+    {{SLIDE_INDEX}}   slide 编号
+    {{TITLE}}         页标题
+    {{LEFT_TITLE}}    左栏标题
+    {{LEFT_BODY}}     左栏正文 HTML
+    {{RIGHT_TITLE}}   右栏标题
+    {{RIGHT_BODY}}    右栏正文 HTML
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{TITLE}}</div>
+  <div class="compare-grid">
+    <div class="compare-card compare-left">
+      <h3>{{LEFT_TITLE}}</h3>
+      <div style="font-size:20px;">{{LEFT_BODY}}</div>
+    </div>
+    <div class="compare-card compare-right">
+      <h3>{{RIGHT_TITLE}}</h3>
+      <div style="font-size:20px;">{{RIGHT_BODY}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<!--
+  节次分隔页 · 每个"节"（§）前面放一页
+  占位符：
+    {{SLIDE_INDEX}}   当前 slide 编号
+    {{SECTION_NUM}}   节次序号，如 "01" / "02" / "三"
+    {{SECTION_TITLE}} 节标题，如 "大气的组成和垂直分层"
+    {{SECTION_EN}}    英文或描述副标（可空）
+-->
+<div class="slide section-slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="section-number">{{SECTION_NUM}}</div>
+  <div class="section-divider"></div>
+  <div class="section-main-title">{{SECTION_TITLE}}</div>
+  <div class="section-divider"></div>
+  <div style="font-family:var(--font-subtitle); font-size:22px; color:#999; margin-top:10px;">{{SECTION_EN}}</div>
+</div>

@@ -1,0 +1,74 @@
+<!--
+  media-embed · 网络多媒体卡片（视频 / 图片）
+
+  用在：教案里提到"著名实验"、"演示视频"、"科学照片"、"地理实景"等能直接从互联网搜到真实素材的地方。
+  用法详见 components/media-workflow.md。
+
+  两种形态：
+  =========
+  【A · 图片】把 WebFetch 抓到的 Wikipedia/百科/官方网站的图 URL 嵌进 <img>
+  【B · 视频】把 bilibili / YouTube 的 embed URL 嵌进 <iframe>
+
+  =========
+  占位符（图片形态）：
+    {{SLIDE_INDEX}}    slide 编号
+    {{PAGE_TITLE}}     slide 标题
+    {{MEDIA_TITLE}}    卡片标题
+    {{IMG_URL}}        图片直链（https://upload.wikimedia.org/... 类似）
+    {{IMG_ALT}}        alt 文本
+    {{CAPTION}}        图注
+    {{SOURCE_NAME}}    来源站点名
+    {{SOURCE_URL}}     来源页 URL
+    {{FETCH_DATE}}     抓取日期
+
+  占位符（视频形态）：
+    {{EMBED_URL}}      iframe 嵌入 URL：
+      bilibili → https://player.bilibili.com/player.html?bvid=BVxxx&page=1&autoplay=0
+      YouTube  → https://www.youtube.com/embed/VIDEO_ID
+    其他字段同图片形态
+
+  =========
+  模板 A · 图片（整页单卡，两栏可改）
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{PAGE_TITLE}}</div>
+  <div style="max-width:900px; margin:0 auto; width:100%;">
+    <div class="media-card">
+      <span class="media-card-badge">📷 网络图片</span>
+      <div class="media-card-title">{{MEDIA_TITLE}}</div>
+      <div class="media-card-body">
+        <img src="{{IMG_URL}}" alt="{{IMG_ALT}}" loading="lazy">
+      </div>
+      <div class="media-card-caption">{{CAPTION}}</div>
+      <div class="media-card-source">
+        <span>来源：<a href="{{SOURCE_URL}}" target="_blank" rel="noopener">{{SOURCE_NAME}}</a></span>
+        <span>抓取于 {{FETCH_DATE}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  模板 B · 视频（整页单卡）
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{PAGE_TITLE}}</div>
+  <div style="max-width:900px; margin:0 auto; width:100%;">
+    <div class="media-card">
+      <span class="media-card-badge">🎬 网络视频</span>
+      <div class="media-card-title">{{MEDIA_TITLE}}</div>
+      <div class="media-card-body">
+        <iframe src="{{EMBED_URL}}" allowfullscreen scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" referrerpolicy="no-referrer"></iframe>
+      </div>
+      <div class="media-card-caption">{{CAPTION}}</div>
+      <div class="media-card-source">
+        <span>来源：<a href="{{SOURCE_URL}}" target="_blank" rel="noopener">{{SOURCE_NAME}}</a></span>
+        <span>抓取于 {{FETCH_DATE}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  模板 C · 两栏混合（左文字 + 右媒体）—— 把上面的 .media-card 塞进 content-two-col 的右栏即可
+-->

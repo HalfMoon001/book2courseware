@@ -1,0 +1,24 @@
+<!--
+  两栏内容页 · 最常用的模板
+  左侧放 SVG/图表/公式，右侧放 info-card 或文字
+  占位符：
+    {{SLIDE_INDEX}}    slide 编号
+    {{TITLE}}          页标题
+    {{SUBTITLE}}       页副标题（可空）
+    {{LEFT_CONTENT}}   左栏内容（SVG 或其他）
+    {{RIGHT_CONTENT}}  右栏内容（一般是 info-card 堆叠，2-4 个）
+
+  也可以把 slide-col-svg 换成普通 slide-col 变成文字+文字两栏。
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{TITLE}}</div>
+  <div class="slide-subtitle">{{SUBTITLE}}</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      {{LEFT_CONTENT}}
+    </div>
+    <div class="slide-col">
+      {{RIGHT_CONTENT}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<!--
+  网络来源卡片 · 展示从互联网抓到的真实素材
+  用法见 web-search-workflow.md
+  占位符：
+    {{CARD_TITLE}}   卡片主标题（通常是网页标题或关键事实的简短表达）
+    {{CARD_BODY}}    正文 HTML，建议用 <ul><li> 列 2-4 条关键事实
+    {{SOURCE_NAME}}  来源站点名，如 "新华社" / "Wikipedia"
+    {{SOURCE_URL}}   原文 URL
+    {{FETCH_DATE}}   抓取日期，如 "2026-04-10"
+
+  可以直接插在任何 slide-col 里，也可以整页只放一张卡片。
+  注意：SOURCE_URL 必须是真实从 WebSearch/WebFetch 返回的 URL，不要编造。
+-->
+<div class="web-card">
+  <span class="web-card-badge">📡 来自网络</span>
+  <div class="web-card-title">{{CARD_TITLE}}</div>
+  <div class="web-card-body">
+    {{CARD_BODY}}
+  </div>
+  <div class="web-card-source">
+    <span>来源：<a href="{{SOURCE_URL}}" target="_blank" rel="noopener">{{SOURCE_NAME}}</a></span>
+    <span>抓取于 {{FETCH_DATE}}</span>
+  </div>
+</div>

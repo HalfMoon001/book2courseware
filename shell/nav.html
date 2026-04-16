@@ -1,0 +1,13 @@
+<!--
+  导航栏 - insert right before the closing body tag.
+  装配时，按总 slide 数 N 生成 N 个 .nav-dot：
+    <button class="nav-dot[ active]" data-target="{{INDEX}}" title="{{TITLE}}"></button>
+  第 0 个（封面）加 active 类。
+  NOTE: do NOT write the literal closing body string in this comment.
+  Assembly scripts may use str.replace() on that marker, and a stray copy
+  here would be replaced first, clobbering the file silently.
+-->
+<div class="nav-bar">
+  {{NAV_DOTS}}
+  <span class="nav-page">1 / {{N_SLIDES}}</span>
+</div>

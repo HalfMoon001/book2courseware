@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{COURSEWARE_TITLE}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --warm-white: #fefbf5;
+  --dark-text: #2c3e50;
+  --blue: #4a90d9;
+  --red: #e06b6b;
+  --green: #5a9e6f;
+  --gold: #c8880a;
+  --purple: #7b68ee;
+  --light-line: #e0d8cc;
+  /* Nunito 放在最前，专治拉丁字符；中文字符自动回退到中文字体。
+     不要删掉 Nunito —— 没有它英文/数字会用中文字体字形，发毛看不清。 */
+  --font-title: 'Nunito', 'ZCOOL KuaiLe', cursive;
+  --font-subtitle: 'Nunito', 'Ma Shan Zheng', cursive;
+  --font-body: 'Nunito', 'Ma Shan Zheng', 'ZCOOL KuaiLe', sans-serif;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  font-family: var(--font-body);
+  background: var(--warm-white);
+  color: var(--dark-text);
+  overflow-x: hidden; overflow-y: auto;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+/* ========== NOTEBOOK PAPER BACKGROUND ========== */
+.slide {
+  display: none;
+  width: 100%; min-height: 100vh;
+  padding: 12px 40px 60px;
+  position: relative;
+  
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      var(--light-line) 31px,
+      var(--light-line) 32px
+    ),
+    linear-gradient(90deg, transparent 59px, #f0c8c8 59px, #f0c8c8 61px, transparent 61px);
+  background-color: var(--warm-white);
+}
+
+.slide.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.slide-title {
+  font-family: var(--font-title);
+  font-size: 36px;
+  color: var(--dark-text);
+  margin-bottom: 2px;
+  text-align: center;
+  position: relative;
+}
+.slide-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 2px auto 0;
+  border-radius: 2px;
+}
+.slide-subtitle {
+  font-family: var(--font-subtitle);
+  font-size: 32px;
+  color: var(--blue);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.keyword {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+.keyword-red { color: var(--red); background: rgba(224,107,107,0.1); }
+.keyword-blue { color: var(--blue); background: rgba(74,144,217,0.1); }
+.keyword-green { color: var(--green); background: rgba(90,158,111,0.1); }
+.keyword-gold { color: var(--gold); background: rgba(200,136,10,0.1); }
+.keyword-purple { color: var(--purple); background: rgba(123,104,238,0.1); }
+
+.arrow-up { color: var(--green); font-weight: bold; font-size: 1.2em; }
+.arrow-down { color: var(--red); font-weight: bold; font-size: 1.2em; }
+
+/* ========== LAYOUT ========== */
+.slide-row {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+.slide svg { max-height: calc(100vh - 140px); }
+.slide-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  gap: 2px;
+}
+.slide-col-svg {
+  flex: 0 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.slide-col-svg svg { height: 100%; width: auto; }
+
+.info-card {
+  background: rgba(255,255,255,0.7);
+  border: 2px dashed var(--light-line);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 1.4;
+  position: relative;
+}
+.info-card::before {
+  content: '';
+  position: absolute;
+  left: -6px; top: 10px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+.info-card.card-red::before { background: var(--red); }
+.info-card.card-blue::before { background: var(--blue); }
+.info-card.card-green::before { background: var(--green); }
+.info-card.card-gold::before { background: var(--gold); }
+.info-card.card-purple::before { background: var(--purple); }
+
+/* ========== FILL-IN BLANKS ========== */
+.blank {
+  display: inline-block;
+  min-width: 80px;
+  border-bottom: 2px dashed var(--red);
+  color: transparent;
+  background: rgba(224,107,107,0.08);
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.blank.revealed {
+  color: var(--red);
+  background: rgba(224,107,107,0.15);
+  border-bottom-style: solid;
+}
+
+@media print {
+  .blank {
+    color: var(--red) !important;
+    border-bottom-style: solid !important;
+  }
+  .slide { display: block !important; page-break-after: always; overflow: visible; height: auto; }
+  .nav-bar { display: none !important; }
+}
+
+/* ========== SECTION TITLE SLIDES ========== */
+.section-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.section-number {
+  font-family: var(--font-title);
+  font-size: 120px;
+  color: rgba(74,144,217,0.15);
+  line-height: 1;
+}
+.section-main-title {
+  font-family: var(--font-title);
+  font-size: 56px;
+  color: var(--dark-text);
+  margin: 10px 0;
+}
+.section-divider {
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 15px auto;
+}
+
+/* ========== COVER SLIDE ========== */
+.cover-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.cover-title {
+  font-family: var(--font-title);
+  font-size: 64px;
+  color: var(--dark-text);
+  margin-top: 20px;
+}
+.cover-chapter {
+  font-family: var(--font-subtitle);
+  font-size: 36px;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+/* ========== NAVIGATION BAR ========== */
+.nav-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 36px;
+  background: rgba(254,251,245,0.95);
+  border-top: 1px solid var(--light-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+.nav-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--light-line);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+.nav-dot.active { background: var(--blue); transform: scale(1.3); }
+.nav-dot:hover { background: var(--gold); }
+.nav-page {
+  font-family: var(--font-subtitle);
+  font-size: 18px;
+  color: var(--dark-text);
+  margin-left: 16px;
+  opacity: 0.7;
+}
+
+/* ========== SVG HAND-DRAWN STYLE ========== */
+svg text { font-family: var(--font-subtitle); }
+.hand-drawn { stroke-linecap: round; stroke-linejoin: round; }
+
+/* ========== ANIMATIONS ========== */
+@keyframes dashFlow { to { stroke-dashoffset: -40; } }
+@keyframes dashFlowReverse { to { stroke-dashoffset: 40; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.flow-arrow { stroke-dasharray: 12 8; animation: dashFlow 1.5s linear infinite; }
+.flow-arrow-up { stroke-dasharray: 12 8; animation: dashFlowReverse 1.5s linear infinite; }
+.anim-fade-in { animation: fadeInUp 0.6s ease forwards; }
+.anim-pulse { animation: pulse 2s ease-in-out infinite; }
+.anim-float { animation: float 3s ease-in-out infinite; }
+
+/* ========== CHAIN / FLOW INDICATOR ========== */
+.chain-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  justify-content: center;
+}
+.chain-step {
+  background: rgba(74,144,217,0.1);
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.chain-step.step-gold { border-color: var(--gold); background: rgba(200,136,10,0.1); }
+.chain-step.step-green { border-color: var(--green); background: rgba(90,158,111,0.1); }
+.chain-step.step-red { border-color: var(--red); background: rgba(224,107,107,0.1); }
+.chain-step.step-blue { border-color: var(--blue); background: rgba(74,144,217,0.1); }
+.chain-step.step-purple { border-color: var(--purple); background: rgba(123,104,238,0.1); }
+.chain-arrow { font-size: 24px; color: var(--gold); }
+
+/* ========== BAR CHART ========== */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  justify-content: center;
+  height: 260px;
+  margin: 10px 0;
+}
+.bar-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.bar-rect {
+  width: 80px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-title);
+  font-size: 24px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.bar-label { font-family: var(--font-subtitle); font-size: 22px; text-align: center; }
+
+/* ========== HIGHLIGHT BOX ========== */
+.highlight-box {
+  border-left: 4px solid var(--gold);
+  background: rgba(200,136,10,0.06);
+  padding: 12px 18px;
+  border-radius: 0 10px 10px 0;
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+/* ========== COMPARISON TWO COLUMNS ========== */
+.compare-grid {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+.compare-card {
+  flex: 1;
+  background: rgba(255,255,255,0.8);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.compare-card.compare-left  { border: 2px solid var(--blue); }
+.compare-card.compare-right { border: 2px solid var(--red);  }
+.compare-card h3 {
+  font-family: var(--font-title);
+  font-size: 26px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.compare-card.compare-left  h3 { color: var(--blue); }
+.compare-card.compare-right h3 { color: var(--red);  }
+
+/* ========== TIMELINE ========== */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  padding: 40px 20px 20px;
+  margin: 20px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 58px;
+  left: 30px; right: 30px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--red));
+  border-radius: 2px;
+}
+.timeline-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 8px;
+}
+.timeline-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 4px solid var(--warm-white);
+  box-shadow: 0 0 0 2px var(--gold);
+  margin: 0 auto 12px;
+  position: relative;
+  z-index: 2;
+}
+.timeline-date {
+  font-family: var(--font-title);
+  font-size: 22px;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.timeline-label {
+  font-family: var(--font-subtitle);
+  font-size: 18px;
+  color: var(--dark-text);
+  line-height: 1.35;
+}
+
+/* ========== WEB SOURCE CARD ========== */
+.web-card {
+  background: rgba(255,255,255,0.85);
+  border: 2px dashed var(--gold);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 10px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(200,136,10,0.08);
+}
+.web-card-badge {
+  position: absolute;
+  top: -12px; left: 18px;
+  background: var(--gold);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: var(--font-subtitle);
+  font-size: 14px;
+}
+.web-card-title {
+  font-family: var(--font-title);
+  font-size: 26px;
+  color: var(--dark-text);
+  margin: 4px 0 10px;
+}
+.web-card-body {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--dark-text);
+}
+.web-card-body ul { padding-left: 22px; margin: 6px 0; }
+.web-card-body li { margin: 4px 0; }
+.web-card-source {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--light-line);
+  font-size: 14px;
+  color: #888;
+  font-family: var(--font-subtitle);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.web-card-source a { color: var(--blue); text-decoration: none; }
+.web-card-source a:hover { text-decoration: underline; }
+
+/* ========== ANSWER FEEDBACK (MCQ) ========== */
+.answer-correct {
+  background: rgba(90,158,111,0.2) !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.answer-wrong {
+  background: rgba(224,107,107,0.2) !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* ========== MINI-GAME SHARED STYLES ==========
+   用于 judge-game / match-game 等互动游戏组件。
+   添加 .game-correct / .game-wrong 类即可显示反馈。 */
+.game-btn {
+  padding: 8px 18px;
+  border: 2px solid var(--blue);
+  background: white;
+  border-radius: 10px;
+  font-family: var(--font-title);
+  font-size: 18px;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.game-btn:hover { background: rgba(74,144,217,0.1); }
+.game-btn.game-correct {
+  background: rgba(90,158,111,0.3) !important;
+  border-color: var(--green) !important;
+  color: var(--green);
+  font-weight: bold;
+}
+.game-btn.game-wrong {
+  background: rgba(224,107,107,0.3) !important;
+  border-color: var(--red) !important;
+  color: var(--red);
+  font-weight: bold;
+}
+.game-card {
+  background: rgba(255,255,255,0.8);
+  border: 2px dashed var(--light-line);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.game-card-label {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.3;
+}
+.game-card-label .emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 4px;
+}
+.game-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.game-opt-btn {
+  padding: 6px 11px;
+  border: 1.5px solid var(--light-line);
+  background: white;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--dark-text);
+  font-family: inherit;
+}
+.game-opt-btn:hover {
+  border-color: var(--blue);
+  background: rgba(74,144,217,0.08);
+}
+.game-opt-btn.game-correct {
+  background: rgba(90,158,111,0.3) !important;
+  border-color: var(--green) !important;
+  color: var(--green);
+  font-weight: bold;
+}
+.game-opt-btn.game-wrong {
+  background: rgba(224,107,107,0.3) !important;
+  border-color: var(--red) !important;
+  color: var(--red);
+  font-weight: bold;
+}
+
+/* ========== MEDIA EMBED CARD ==========
+   用 WebSearch + WebFetch 抓到的视频/图片素材。
+   结构：徽章 · 标题 · 媒体内容（<img> 或 <iframe>）· 图注 · 来源
+   用在 components/media-embed.html。 */
+.media-card {
+  background: rgba(255,255,255,0.88);
+  border: 2px dashed var(--purple);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 8px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(123,104,238,0.1);
+  display: flex;
+  flex-direction: column;
+}
+.media-card-badge {
+  position: absolute;
+  top: -12px; left: 18px;
+  background: var(--purple);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: var(--font-subtitle);
+  font-size: 14px;
+}
+.media-card-title {
+  font-family: var(--font-title);
+  font-size: 24px;
+  color: var(--dark-text);
+  margin: 4px 0 10px;
+  text-align: center;
+}
+.media-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 200px;
+  max-height: calc(100vh - 260px);
+}
+.media-card-body img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.media-card-body iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  display: block;
+}
+.media-card-caption {
+  font-size: 18px;
+  color: var(--dark-text);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.media-card-source {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--light-line);
+  font-size: 13px;
+  color: #888;
+  font-family: var(--font-subtitle);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.media-card-source a { color: var(--blue); text-decoration: none; }
+.media-card-source a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     共享箭头 marker · 所有 SVG 都可以用 marker-end="url(#arr-*)"
+     使用方式：
+       <line x1=".." y1=".." x2=".." y2=".." stroke="#e06b6b" marker-end="url(#arr-red)"/>
+       <path d="M..." stroke="#c8880a" marker-end="url(#arr-gold)"/>
+     orient="auto-start-reverse" 支持同时用作 marker-start 和 marker-end。
+     禁止手画 <polygon> 三角形当箭头 —— 旋转后坐标算不准，视觉上会飘。
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+  <defs>
+    <marker id="arr-red"    viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e06b6b"/></marker>
+    <marker id="arr-blue"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
+    <marker id="arr-green"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a9e6f"/></marker>
+    <marker id="arr-gold"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c8880a"/></marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7b68ee"/></marker>
+    <marker id="arr-dark"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c3e50"/></marker>
+    <marker id="arr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FFA500"/></marker>
+  </defs>
+</svg>
+

@@ -1,0 +1,25 @@
+<!--
+  封面页 · 每份课件只有 1 个，永远是 data-slide="0"
+  占位符：
+    {{SUBJECT_LABEL}}    如 "第二章" / "Chapter 3" / "专题一"
+    {{MAIN_TITLE}}       主标题，如 "地球上的大气"
+    {{SUBTITLE_EN}}      副标题（可选英文/描述）
+    {{COVER_SVG}}        主题装饰 SVG — 没有合适的就用下方 fallback
+-->
+<div class="slide cover-slide active" data-slide="0">
+  {{COVER_SVG}}
+  <div class="cover-chapter">{{SUBJECT_LABEL}}</div>
+  <div class="cover-title">{{MAIN_TITLE}}</div>
+  <div style="font-family:var(--font-subtitle); font-size:24px; color:var(--blue); margin-top:15px; opacity:0.7;">{{SUBTITLE_EN}}</div>
+  <div style="font-family:var(--font-subtitle); font-size:18px; color:#999; margin-top:30px;">按 ← → 方向键翻页 &nbsp;|&nbsp; 点击填空查看答案</div>
+</div>
+
+<!--
+  FALLBACK 装饰 SVG（当没有主题相关 SVG 时用这个）：
+  <svg width="500" height="180" viewBox="0 0 500 180" class="hand-drawn">
+    <path d="M40 140 Q120 110 200 130 Q280 100 360 125 Q420 105 460 120" fill="none" stroke="#4a90d9" stroke-width="3" opacity="0.5"/>
+    <path d="M40 100 Q120 70 200 90 Q280 60 360 85 Q420 65 460 80" fill="none" stroke="#c8880a" stroke-width="3" opacity="0.5"/>
+    <path d="M40 60 Q120 30 200 50 Q280 20 360 45 Q420 25 460 40" fill="none" stroke="#7b68ee" stroke-width="3" opacity="0.5"/>
+    <circle cx="80" cy="40" r="18" fill="#FFD54F" stroke="#c8880a" stroke-width="2"/>
+  </svg>
+-->

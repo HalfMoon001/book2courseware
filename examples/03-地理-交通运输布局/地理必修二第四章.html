@@ -1,0 +1,3249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高中地理必修二 · 第四章 · 交通运输布局与区域发展</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --warm-white: #fefbf5;
+  --dark-text: #2c3e50;
+  --blue: #4a90d9;
+  --red: #e06b6b;
+  --green: #5a9e6f;
+  --gold: #c8880a;
+  --purple: #7b68ee;
+  --light-line: #e0d8cc;
+  /* Nunito 放在最前，专治拉丁字符；中文字符自动回退到中文字体。
+     不要删掉 Nunito —— 没有它英文/数字会用中文字体字形，发毛看不清。 */
+  --font-title: 'Nunito', 'ZCOOL KuaiLe', cursive;
+  --font-subtitle: 'Nunito', 'Ma Shan Zheng', cursive;
+  --font-body: 'Nunito', 'Ma Shan Zheng', 'ZCOOL KuaiLe', sans-serif;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  font-family: var(--font-body);
+  background: var(--warm-white);
+  color: var(--dark-text);
+  overflow-x: hidden; overflow-y: auto;
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+/* ========== NOTEBOOK PAPER BACKGROUND ========== */
+.slide {
+  display: none;
+  width: 100%; min-height: 100vh;
+  padding: 12px 40px 60px;
+  position: relative;
+  
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      var(--light-line) 31px,
+      var(--light-line) 32px
+    ),
+    linear-gradient(90deg, transparent 59px, #f0c8c8 59px, #f0c8c8 61px, transparent 61px);
+  background-color: var(--warm-white);
+}
+
+.slide.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.slide-title {
+  font-family: var(--font-title);
+  font-size: 36px;
+  color: var(--dark-text);
+  margin-bottom: 2px;
+  text-align: center;
+  position: relative;
+}
+.slide-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 2px auto 0;
+  border-radius: 2px;
+}
+.slide-subtitle {
+  font-family: var(--font-subtitle);
+  font-size: 32px;
+  color: var(--blue);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.keyword {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+.keyword-red { color: var(--red); background: rgba(224,107,107,0.1); }
+.keyword-blue { color: var(--blue); background: rgba(74,144,217,0.1); }
+.keyword-green { color: var(--green); background: rgba(90,158,111,0.1); }
+.keyword-gold { color: var(--gold); background: rgba(200,136,10,0.1); }
+.keyword-purple { color: var(--purple); background: rgba(123,104,238,0.1); }
+
+.arrow-up { color: var(--green); font-weight: bold; font-size: 1.2em; }
+.arrow-down { color: var(--red); font-weight: bold; font-size: 1.2em; }
+
+/* ========== LAYOUT ========== */
+.slide-row {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+.slide svg { max-height: calc(100vh - 140px); }
+.slide-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  gap: 2px;
+}
+.slide-col-svg {
+  flex: 0 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.slide-col-svg svg { height: 100%; width: auto; }
+
+.info-card {
+  background: rgba(255,255,255,0.7);
+  border: 2px dashed var(--light-line);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 1.4;
+  position: relative;
+}
+.info-card::before {
+  content: '';
+  position: absolute;
+  left: -6px; top: 10px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+.info-card.card-red::before { background: var(--red); }
+.info-card.card-blue::before { background: var(--blue); }
+.info-card.card-green::before { background: var(--green); }
+.info-card.card-gold::before { background: var(--gold); }
+.info-card.card-purple::before { background: var(--purple); }
+
+/* ========== FILL-IN BLANKS ========== */
+.blank {
+  display: inline-block;
+  min-width: 80px;
+  border-bottom: 2px dashed var(--red);
+  color: transparent;
+  background: rgba(224,107,107,0.08);
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.blank.revealed {
+  color: var(--red);
+  background: rgba(224,107,107,0.15);
+  border-bottom-style: solid;
+}
+
+@media print {
+  .blank {
+    color: var(--red) !important;
+    border-bottom-style: solid !important;
+  }
+  .slide { display: block !important; page-break-after: always; overflow: visible; height: auto; }
+  .nav-bar { display: none !important; }
+}
+
+/* ========== SECTION TITLE SLIDES ========== */
+.section-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.section-number {
+  font-family: var(--font-title);
+  font-size: 120px;
+  color: rgba(74,144,217,0.15);
+  line-height: 1;
+}
+.section-main-title {
+  font-family: var(--font-title);
+  font-size: 56px;
+  color: var(--dark-text);
+  margin: 10px 0;
+}
+.section-divider {
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 15px auto;
+}
+
+/* ========== COVER SLIDE ========== */
+.cover-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.cover-title {
+  font-family: var(--font-title);
+  font-size: 64px;
+  color: var(--dark-text);
+  margin-top: 20px;
+}
+.cover-chapter {
+  font-family: var(--font-subtitle);
+  font-size: 36px;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+/* ========== NAVIGATION BAR ========== */
+.nav-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 36px;
+  background: rgba(254,251,245,0.95);
+  border-top: 1px solid var(--light-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+.nav-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--light-line);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+.nav-dot.active { background: var(--blue); transform: scale(1.3); }
+.nav-dot:hover { background: var(--gold); }
+.nav-page {
+  font-family: var(--font-subtitle);
+  font-size: 18px;
+  color: var(--dark-text);
+  margin-left: 16px;
+  opacity: 0.7;
+}
+
+/* ========== SVG HAND-DRAWN STYLE ========== */
+svg text { font-family: var(--font-subtitle); }
+.hand-drawn { stroke-linecap: round; stroke-linejoin: round; }
+
+/* ========== ANIMATIONS ========== */
+@keyframes dashFlow { to { stroke-dashoffset: -40; } }
+@keyframes dashFlowReverse { to { stroke-dashoffset: 40; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.flow-arrow { stroke-dasharray: 12 8; animation: dashFlow 1.5s linear infinite; }
+.flow-arrow-up { stroke-dasharray: 12 8; animation: dashFlowReverse 1.5s linear infinite; }
+.anim-fade-in { animation: fadeInUp 0.6s ease forwards; }
+.anim-pulse { animation: pulse 2s ease-in-out infinite; }
+.anim-float { animation: float 3s ease-in-out infinite; }
+
+/* ========== CHAIN / FLOW INDICATOR ========== */
+.chain-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  justify-content: center;
+}
+.chain-step {
+  background: rgba(74,144,217,0.1);
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.chain-step.step-gold { border-color: var(--gold); background: rgba(200,136,10,0.1); }
+.chain-step.step-green { border-color: var(--green); background: rgba(90,158,111,0.1); }
+.chain-step.step-red { border-color: var(--red); background: rgba(224,107,107,0.1); }
+.chain-step.step-blue { border-color: var(--blue); background: rgba(74,144,217,0.1); }
+.chain-step.step-purple { border-color: var(--purple); background: rgba(123,104,238,0.1); }
+.chain-arrow { font-size: 24px; color: var(--gold); }
+
+/* ========== BAR CHART ========== */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  justify-content: center;
+  height: 260px;
+  margin: 10px 0;
+}
+.bar-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.bar-rect {
+  width: 80px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-title);
+  font-size: 24px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.bar-label { font-family: var(--font-subtitle); font-size: 22px; text-align: center; }
+
+/* ========== HIGHLIGHT BOX ========== */
+.highlight-box {
+  border-left: 4px solid var(--gold);
+  background: rgba(200,136,10,0.06);
+  padding: 12px 18px;
+  border-radius: 0 10px 10px 0;
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+/* ========== COMPARISON TWO COLUMNS ========== */
+.compare-grid {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+.compare-card {
+  flex: 1;
+  background: rgba(255,255,255,0.8);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.compare-card.compare-left  { border: 2px solid var(--blue); }
+.compare-card.compare-right { border: 2px solid var(--red);  }
+.compare-card h3 {
+  font-family: var(--font-title);
+  font-size: 26px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.compare-card.compare-left  h3 { color: var(--blue); }
+.compare-card.compare-right h3 { color: var(--red);  }
+
+/* ========== TIMELINE ========== */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  padding: 40px 20px 20px;
+  margin: 20px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 58px;
+  left: 30px; right: 30px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--red));
+  border-radius: 2px;
+}
+.timeline-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 8px;
+}
+.timeline-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 4px solid var(--warm-white);
+  box-shadow: 0 0 0 2px var(--gold);
+  margin: 0 auto 12px;
+  position: relative;
+  z-index: 2;
+}
+.timeline-date {
+  font-family: var(--font-title);
+  font-size: 22px;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.timeline-label {
+  font-family: var(--font-subtitle);
+  font-size: 18px;
+  color: var(--dark-text);
+  line-height: 1.35;
+}
+
+/* ========== WEB SOURCE CARD ========== */
+.web-card {
+  background: rgba(255,255,255,0.85);
+  border: 2px dashed var(--gold);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 10px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(200,136,10,0.08);
+}
+.web-card-badge {
+  position: absolute;
+  top: -12px; left: 18px;
+  background: var(--gold);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: var(--font-subtitle);
+  font-size: 14px;
+}
+.web-card-title {
+  font-family: var(--font-title);
+  font-size: 26px;
+  color: var(--dark-text);
+  margin: 4px 0 10px;
+}
+.web-card-body {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--dark-text);
+}
+.web-card-body ul { padding-left: 22px; margin: 6px 0; }
+.web-card-body li { margin: 4px 0; }
+.web-card-source {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--light-line);
+  font-size: 14px;
+  color: #888;
+  font-family: var(--font-subtitle);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.web-card-source a { color: var(--blue); text-decoration: none; }
+.web-card-source a:hover { text-decoration: underline; }
+
+/* ========== ANSWER FEEDBACK (MCQ) ========== */
+.answer-correct {
+  background: rgba(90,158,111,0.2) !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.answer-wrong {
+  background: rgba(224,107,107,0.2) !important;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+/* ========== MINI-GAME SHARED STYLES ==========
+   用于 judge-game / match-game 等互动游戏组件。
+   添加 .game-correct / .game-wrong 类即可显示反馈。 */
+.game-btn {
+  padding: 8px 18px;
+  border: 2px solid var(--blue);
+  background: white;
+  border-radius: 10px;
+  font-family: var(--font-title);
+  font-size: 18px;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.game-btn:hover { background: rgba(74,144,217,0.1); }
+.game-btn.game-correct {
+  background: rgba(90,158,111,0.3) !important;
+  border-color: var(--green) !important;
+  color: var(--green);
+  font-weight: bold;
+}
+.game-btn.game-wrong {
+  background: rgba(224,107,107,0.3) !important;
+  border-color: var(--red) !important;
+  color: var(--red);
+  font-weight: bold;
+}
+.game-card {
+  background: rgba(255,255,255,0.8);
+  border: 2px dashed var(--light-line);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.game-card-label {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.3;
+}
+.game-card-label .emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 4px;
+}
+.game-opts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.game-opt-btn {
+  padding: 6px 11px;
+  border: 1.5px solid var(--light-line);
+  background: white;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--dark-text);
+  font-family: inherit;
+}
+.game-opt-btn:hover {
+  border-color: var(--blue);
+  background: rgba(74,144,217,0.08);
+}
+.game-opt-btn.game-correct {
+  background: rgba(90,158,111,0.3) !important;
+  border-color: var(--green) !important;
+  color: var(--green);
+  font-weight: bold;
+}
+.game-opt-btn.game-wrong {
+  background: rgba(224,107,107,0.3) !important;
+  border-color: var(--red) !important;
+  color: var(--red);
+  font-weight: bold;
+}
+
+/* ========== MEDIA EMBED CARD ==========
+   用 WebSearch + WebFetch 抓到的视频/图片素材。
+   结构：徽章 · 标题 · 媒体内容（<img> 或 <iframe>）· 图注 · 来源
+   用在 components/media-embed.html。 */
+.media-card {
+  background: rgba(255,255,255,0.88);
+  border: 2px dashed var(--purple);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 8px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(123,104,238,0.1);
+  display: flex;
+  flex-direction: column;
+}
+.media-card-badge {
+  position: absolute;
+  top: -12px; left: 18px;
+  background: var(--purple);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: var(--font-subtitle);
+  font-size: 14px;
+}
+.media-card-title {
+  font-family: var(--font-title);
+  font-size: 24px;
+  color: var(--dark-text);
+  margin: 4px 0 10px;
+  text-align: center;
+}
+.media-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 200px;
+  max-height: calc(100vh - 260px);
+}
+.media-card-body img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.media-card-body iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: none;
+  display: block;
+}
+.media-card-caption {
+  font-size: 18px;
+  color: var(--dark-text);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.media-card-source {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--light-line);
+  font-size: 13px;
+  color: #888;
+  font-family: var(--font-subtitle);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.media-card-source a { color: var(--blue); text-decoration: none; }
+.media-card-source a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     共享箭头 marker · 所有 SVG 都可以用 marker-end="url(#arr-*)"
+     使用方式：
+       <line x1=".." y1=".." x2=".." y2=".." stroke="#e06b6b" marker-end="url(#arr-red)"/>
+       <path d="M..." stroke="#c8880a" marker-end="url(#arr-gold)"/>
+     orient="auto-start-reverse" 支持同时用作 marker-start 和 marker-end。
+     禁止手画 <polygon> 三角形当箭头 —— 旋转后坐标算不准，视觉上会飘。
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+  <defs>
+    <marker id="arr-red"    viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e06b6b"/></marker>
+    <marker id="arr-blue"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
+    <marker id="arr-green"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a9e6f"/></marker>
+    <marker id="arr-gold"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c8880a"/></marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7b68ee"/></marker>
+    <marker id="arr-dark"   viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c3e50"/></marker>
+    <marker id="arr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FFA500"/></marker>
+  </defs>
+</svg>
+
+
+<!-- ============ Slide 0 · Cover ============ -->
+<div class="slide cover-slide active" data-slide="0">
+  <svg width="620" height="220" viewBox="0 0 620 220" class="hand-drawn">
+    <!-- sky gradient suggestion -->
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#eaf4fd"/>
+        <stop offset="1" stop-color="#fefbf5"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="620" height="220" fill="url(#sky)" rx="12"/>
+    <!-- city silhouette back -->
+    <path d="M0 170 L40 170 L40 140 L80 140 L80 120 L120 120 L120 150 L160 150 L160 110 L200 110 L200 140 L240 140 L240 100 L280 100 L280 130 L320 130 L320 115 L360 115 L360 145 L400 145 L400 125 L440 125 L440 150 L480 150 L480 135 L520 135 L520 160 L560 160 L560 140 L600 140 L600 170 L620 170 L620 195 L0 195 Z" fill="#4a90d9" opacity="0.18"/>
+    <!-- elevated rail line -->
+    <line x1="20" y1="155" x2="600" y2="155" stroke="#c8880a" stroke-width="3" opacity="0.55"/>
+    <!-- sleepers -->
+    <g stroke="#c8880a" stroke-width="2" opacity="0.4">
+      <line x1="40" y1="150" x2="40" y2="160"/><line x1="80" y1="150" x2="80" y2="160"/>
+      <line x1="120" y1="150" x2="120" y2="160"/><line x1="160" y1="150" x2="160" y2="160"/>
+      <line x1="200" y1="150" x2="200" y2="160"/><line x1="240" y1="150" x2="240" y2="160"/>
+      <line x1="280" y1="150" x2="280" y2="160"/><line x1="320" y1="150" x2="320" y2="160"/>
+      <line x1="360" y1="150" x2="360" y2="160"/><line x1="400" y1="150" x2="400" y2="160"/>
+      <line x1="440" y1="150" x2="440" y2="160"/><line x1="480" y1="150" x2="480" y2="160"/>
+      <line x1="520" y1="150" x2="520" y2="160"/><line x1="560" y1="150" x2="560" y2="160"/>
+    </g>
+    <!-- hsr train sleek -->
+    <path d="M200 130 L420 130 Q440 130 446 140 L446 148 L190 148 L190 140 Q190 130 200 130 Z" fill="#e06b6b"/>
+    <path d="M200 130 L420 130 Q440 130 446 140 L446 148 L190 148 L190 140 Q190 130 200 130 Z" fill="none" stroke="#a04747" stroke-width="1.5"/>
+    <rect x="210" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="240" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="270" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="300" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="330" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="360" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <rect x="390" y="135" width="20" height="10" fill="#fefbf5" opacity="0.9"/>
+    <!-- speed lines -->
+    <line x1="90" y1="138" x2="180" y2="138" stroke="#e06b6b" stroke-width="2" opacity="0.5"/>
+    <line x1="70" y1="143" x2="180" y2="143" stroke="#e06b6b" stroke-width="2" opacity="0.4"/>
+    <!-- sun -->
+    <circle cx="540" cy="50" r="22" fill="#FFD54F" stroke="#c8880a" stroke-width="2"/>
+    <!-- plane -->
+    <path d="M60 40 L130 52 L146 58 L128 62 L108 70 L96 66 L80 70 L70 62 L78 58 L68 50 Z" fill="#7b68ee"/>
+    <!-- clouds -->
+    <ellipse cx="280" cy="45" rx="22" ry="9" fill="#fff" opacity="0.8"/>
+    <ellipse cx="300" cy="50" rx="18" ry="7" fill="#fff" opacity="0.8"/>
+    <!-- ship hint at right -->
+    <path d="M460 180 L560 180 L570 165 L470 165 Z" fill="#4a90d9" opacity="0.75"/>
+    <rect x="500" y="145" width="3" height="20" fill="#2c3e50"/>
+    <path d="M503 145 L520 165 L503 165 Z" fill="#fff" opacity="0.9"/>
+    <!-- waves -->
+    <path d="M450 190 Q480 198 510 190 Q540 182 570 190 Q590 195 600 190" fill="none" stroke="#4a90d9" stroke-width="2" opacity="0.5"/>
+  </svg>
+  <div class="cover-chapter">第四章</div>
+  <div class="cover-title">交通运输布局与区域发展</div>
+  <div style="font-family:var(--font-subtitle); font-size:24px; color:var(--blue); margin-top:15px; opacity:0.7;">Transportation Layout &amp; Regional Development</div>
+  <div style="font-family:var(--font-subtitle); font-size:18px; color:#999; margin-top:30px;">按 ← → 方向键翻页 &nbsp;|&nbsp; 点击填空查看答案 &nbsp;|&nbsp; 右上角可开启编辑模式</div>
+</div>
+
+<!-- ============ Slide 1 · Section 1 Divider ============ -->
+<div class="slide section-slide" data-slide="1">
+  <div class="section-number">01</div>
+  <div class="section-divider"></div>
+  <div class="section-main-title">区域发展对交通运输布局的影响</div>
+  <div class="section-divider"></div>
+  <div style="font-family:var(--font-subtitle); font-size:22px; color:#999; margin-top:10px;">How Regional Development Shapes Transportation</div>
+</div>
+
+<!-- ============ Slide 2 · 布局任务与目的 ============ -->
+<div class="slide" data-slide="2">
+  <div class="slide-title">一、交通运输布局的任务与目的</div>
+  <div class="slide-subtitle">什么是"布局"？</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="360" height="320" viewBox="0 0 360 320" class="hand-drawn">
+        <!-- nodes = 场站 -->
+        <circle cx="80" cy="70" r="20" fill="#4a90d9" opacity="0.85"/>
+        <text x="80" y="76" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">站</text>
+        <circle cx="280" cy="55" r="22" fill="#c8880a" opacity="0.85"/>
+        <text x="280" y="61" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">枢纽</text>
+        <circle cx="180" cy="170" r="26" fill="#e06b6b" opacity="0.85"/>
+        <text x="180" y="176" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">枢纽</text>
+        <circle cx="70" cy="250" r="20" fill="#5a9e6f" opacity="0.85"/>
+        <text x="70" y="256" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">站</text>
+        <circle cx="290" cy="245" r="20" fill="#7b68ee" opacity="0.85"/>
+        <text x="290" y="251" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">站</text>
+        <!-- edges = 线网 -->
+        <line x1="80" y1="70" x2="180" y2="170" stroke="#c8880a" stroke-width="3" marker-end="url(#arr-gold)"/>
+        <line x1="280" y1="55" x2="180" y2="170" stroke="#c8880a" stroke-width="3" marker-end="url(#arr-gold)"/>
+        <line x1="180" y1="170" x2="70" y2="250" stroke="#c8880a" stroke-width="3" marker-end="url(#arr-gold)"/>
+        <line x1="180" y1="170" x2="290" y2="245" stroke="#c8880a" stroke-width="3" marker-end="url(#arr-gold)"/>
+        <line x1="80" y1="70" x2="280" y2="55" stroke="#4a90d9" stroke-width="2" stroke-dasharray="6 4" opacity="0.7"/>
+        <line x1="70" y1="250" x2="290" y2="245" stroke="#4a90d9" stroke-width="2" stroke-dasharray="6 4" opacity="0.7"/>
+        <text x="180" y="25" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">交通线网 · 场站</text>
+        <text x="180" y="305" font-size="16" text-anchor="middle" fill="#888">客流 · 货流的组织</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-blue"><b>任务</b> — <span class="keyword keyword-blue">交通线网</span>、<span class="keyword keyword-blue">场站</span>如何组织，<span class="keyword keyword-gold">客流、货流</span>如何分配、引导。</div>
+      <div class="info-card card-gold"><b>目的</b> — 实现区域运输的<span class="keyword keyword-gold">合理化</span>，获得最大的<span class="keyword keyword-red">经济效益</span>和<span class="keyword keyword-green">社会效益</span>。</div>
+      <div class="info-card card-purple"><b>动态演变</b> — 布局在不断变化，逐渐趋向 <span class="keyword keyword-purple">完善、优化</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 3 · 影响布局的三大因素 ============ -->
+<div class="slide" data-slide="3">
+  <div class="slide-title">二、影响交通运输布局的三大因素</div>
+  <div class="slide-subtitle">人文 · 自然 · 未来趋势</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="340" height="320" viewBox="0 0 340 320" class="hand-drawn">
+        <circle cx="120" cy="125" r="85" fill="#4a90d9" fill-opacity="0.22" stroke="#4a90d9" stroke-width="3"/>
+        <circle cx="220" cy="125" r="85" fill="#5a9e6f" fill-opacity="0.22" stroke="#5a9e6f" stroke-width="3"/>
+        <circle cx="170" cy="215" r="85" fill="#c8880a" fill-opacity="0.22" stroke="#c8880a" stroke-width="3"/>
+        <text x="80" y="95" font-size="22" fill="#4a90d9" font-weight="bold">人文</text>
+        <text x="230" y="95" font-size="22" fill="#5a9e6f" font-weight="bold">自然</text>
+        <text x="140" y="295" font-size="20" fill="#c8880a" font-weight="bold">未来趋势</text>
+        <text x="170" y="165" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">布局</text>
+        <text x="170" y="185" font-size="14" text-anchor="middle" fill="#2c3e50">决策</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-blue"><b>① 人文因素</b> — 适应 <span class="keyword keyword-blue">经济社会发展</span> 需要，立足现有 <span class="keyword keyword-gold">经济水平、技术装备</span>。</div>
+      <div class="info-card card-green"><b>② 自然因素</b> — <span class="keyword keyword-green">地质、地貌、气候、水文</span> 四大类。</div>
+      <div class="info-card card-gold"><b>③ 其他条件</b> — 不仅考虑当前实际，还要预测 <span class="keyword keyword-red">客流、货流未来发展趋势</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 4 · 布局五大原则 ============ -->
+<div class="slide" data-slide="4">
+  <div class="slide-title">三、交通运输布局的五大原则</div>
+  <div class="slide-subtitle">依据需求 · 适度超前 · 因地制宜 · 少占土地 · 综合优势</div>
+  <div class="slide-row">
+    <div class="slide-col">
+      <div class="info-card card-blue"><b>1️⃣ 依据运输需求</b> — 方式、线路、标准、网密度都应依需求而定。</div>
+      <div class="info-card card-gold"><b>2️⃣ 适度超前</b> — 设计满足 <span class="keyword keyword-gold">今后一定时期</span> 需求，标准过高则浪费。</div>
+      <div class="info-card card-green"><b>3️⃣ 因地制宜</b> — 方式与选址要 <span class="keyword keyword-green">充分考虑自然条件</span>。</div>
+      <div class="info-card card-red"><b>4️⃣ 尽量少占土地</b> — 尤其是 <span class="keyword keyword-red">耕地</span>。</div>
+      <div class="info-card card-purple"><b>5️⃣ 发挥综合运输优势</b> — 做好转运衔接，形成<span class="keyword keyword-purple">立体、系统的网络</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 5 · 运输需求 ↔ 布局规模 ============ -->
+<div class="slide" data-slide="5">
+  <div class="slide-title">四、运输需求决定布局规模</div>
+  <div class="compare-grid">
+    <div class="compare-card compare-left">
+      <h3>需求量较小</h3>
+      <div style="font-size:20px;">
+        <svg width="100%" height="130" viewBox="0 0 260 130" class="hand-drawn">
+          <line x1="20" y1="90" x2="240" y2="90" stroke="#4a90d9" stroke-width="3"/>
+          <line x1="20" y1="95" x2="240" y2="95" stroke="#4a90d9" stroke-width="3"/>
+          <rect x="105" y="55" width="50" height="38" rx="5" fill="#4a90d9"/>
+          <rect x="112" y="62" width="12" height="14" fill="#fff" opacity="0.9"/>
+          <rect x="130" y="62" width="12" height="14" fill="#fff" opacity="0.9"/>
+          <circle cx="118" cy="98" r="5" fill="#2c3e50"/>
+          <circle cx="142" cy="98" r="5" fill="#2c3e50"/>
+          <rect x="70" y="100" width="120" height="10" fill="#4a90d9" opacity="0.3"/>
+          <text x="130" y="125" font-size="16" text-anchor="middle" fill="#888">小型车站 · 低标准</text>
+        </svg>
+        <div class="info-card card-blue"><b>交通线标准</b> — <span class="keyword keyword-blue">较低</span></div>
+        <div class="info-card card-blue"><b>场站规模</b> — <span class="keyword keyword-blue">较小</span></div>
+        <div class="info-card card-blue"><b>典型</b> — 边远山区 · 人口稀少地带</div>
+      </div>
+    </div>
+    <div class="compare-card compare-right">
+      <h3>需求量较大</h3>
+      <div style="font-size:20px;">
+        <svg width="100%" height="130" viewBox="0 0 260 130" class="hand-drawn">
+          <line x1="10" y1="85" x2="250" y2="85" stroke="#e06b6b" stroke-width="4"/>
+          <line x1="10" y1="92" x2="250" y2="92" stroke="#e06b6b" stroke-width="4"/>
+          <line x1="10" y1="100" x2="250" y2="100" stroke="#e06b6b" stroke-width="4"/>
+          <rect x="30" y="35" width="200" height="50" rx="6" fill="#e06b6b"/>
+          <rect x="40" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="62" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="84" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="106" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="128" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="150" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="172" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="194" y="45" width="16" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="216" y="45" width="8" height="18" fill="#fff" opacity="0.9"/>
+          <rect x="75" y="20" width="110" height="15" fill="#a04747"/>
+          <rect x="115" y="5" width="30" height="15" fill="#c8880a"/>
+          <text x="130" y="125" font-size="16" text-anchor="middle" fill="#888">大型枢纽 · 高标准</text>
+        </svg>
+        <div class="info-card card-red"><b>交通线标准</b> — <span class="keyword keyword-red">较高</span></div>
+        <div class="info-card card-red"><b>场站规模</b> — <span class="keyword keyword-red">较大</span></div>
+        <div class="info-card card-red"><b>典型</b> — 大城市圈 · 港口 · 枢纽</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 6 · 资金对布局的影响 ============ -->
+<div class="slide" data-slide="6">
+  <div class="slide-title">五、资金决定交通布局的密度与质量</div>
+  <div class="compare-grid">
+    <div class="compare-card compare-left">
+      <h3>经济落后地区</h3>
+      <div style="font-size:20px;">
+        <svg width="100%" height="150" viewBox="0 0 260 150" class="hand-drawn">
+          <!-- sparse network: only a single line with 2 stops -->
+          <line x1="20" y1="80" x2="240" y2="80" stroke="#4a90d9" stroke-width="2" stroke-dasharray="10 6"/>
+          <circle cx="60" cy="80" r="7" fill="#4a90d9"/>
+          <circle cx="200" cy="80" r="7" fill="#4a90d9"/>
+          <text x="60" y="65" font-size="13" text-anchor="middle" fill="#4a90d9">站</text>
+          <text x="200" y="65" font-size="13" text-anchor="middle" fill="#4a90d9">站</text>
+          <!-- single crossing -->
+          <line x1="130" y1="30" x2="130" y2="130" stroke="#4a90d9" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+          <circle cx="130" cy="80" r="5" fill="#c8880a"/>
+          <text x="130" y="145" font-size="14" text-anchor="middle" fill="#888">线网稀疏 · 质量低</text>
+        </svg>
+        <div class="info-card card-blue"><b>💰 资金</b> — 政府 <span class="keyword keyword-blue">无力</span> 全面解决，<span class="keyword keyword-red">借助外力</span></div>
+        <div class="info-card card-blue"><b>布局策略</b> — 只建设 <span class="keyword keyword-blue">急需</span> 的线路和站点</div>
+        <div class="info-card card-blue"><b>密度 &amp; 质量</b> — <span class="keyword keyword-red">稀疏、较低</span></div>
+      </div>
+    </div>
+    <div class="compare-card compare-right">
+      <h3>经济发达地区</h3>
+      <div style="font-size:20px;">
+        <svg width="100%" height="150" viewBox="0 0 260 150" class="hand-drawn">
+          <!-- dense grid -->
+          <line x1="10" y1="40" x2="250" y2="40" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="10" y1="80" x2="250" y2="80" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="10" y1="120" x2="250" y2="120" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="50" y1="20" x2="50" y2="140" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="100" y1="20" x2="100" y2="140" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="150" y1="20" x2="150" y2="140" stroke="#e06b6b" stroke-width="3"/>
+          <line x1="200" y1="20" x2="200" y2="140" stroke="#e06b6b" stroke-width="3"/>
+          <!-- ring -->
+          <circle cx="130" cy="80" r="45" fill="none" stroke="#c8880a" stroke-width="2.5"/>
+          <!-- nodes at intersections -->
+          <circle cx="50" cy="40" r="4" fill="#c8880a"/>
+          <circle cx="100" cy="40" r="4" fill="#c8880a"/>
+          <circle cx="150" cy="40" r="4" fill="#c8880a"/>
+          <circle cx="200" cy="40" r="4" fill="#c8880a"/>
+          <circle cx="50" cy="80" r="4" fill="#c8880a"/>
+          <circle cx="100" cy="80" r="4" fill="#c8880a"/>
+          <circle cx="150" cy="80" r="4" fill="#c8880a"/>
+          <circle cx="200" cy="80" r="4" fill="#c8880a"/>
+          <circle cx="50" cy="120" r="4" fill="#c8880a"/>
+          <circle cx="100" cy="120" r="4" fill="#c8880a"/>
+          <circle cx="150" cy="120" r="4" fill="#c8880a"/>
+          <circle cx="200" cy="120" r="4" fill="#c8880a"/>
+        </svg>
+        <div class="info-card card-red"><b>💰 资金</b> — 政府拥有 <span class="keyword keyword-red">足够资金</span></div>
+        <div class="info-card card-red"><b>布局策略</b> — <span class="keyword keyword-red">全面提高</span> 运输水平</div>
+        <div class="info-card card-red"><b>密度 &amp; 质量</b> — <span class="keyword keyword-green">密集、较高</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 7 · 五种运输方式概览 ============ -->
+<div class="slide" data-slide="7">
+  <div class="slide-title">六、五种主要运输方式</div>
+  <div class="slide-subtitle">铁路 · 公路 · 水路 · 航空 · 管道</div>
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; flex:1; align-items:stretch;">
+    <div class="info-card card-blue" style="text-align:center;">
+      <div style="font-size:72px; line-height:1.1;">🚄</div>
+      <div style="font-size:24px;"><b>铁路</b></div>
+      <div style="font-size:16px;color:#555;">当代最重要</div>
+    </div>
+    <div class="info-card card-red" style="text-align:center;">
+      <div style="font-size:72px; line-height:1.1;">🚚</div>
+      <div style="font-size:24px;"><b>公路</b></div>
+      <div style="font-size:16px;color:#555;">发展最快</div>
+    </div>
+    <div class="info-card card-green" style="text-align:center;">
+      <div style="font-size:72px; line-height:1.1;">🚢</div>
+      <div style="font-size:24px;"><b>水路</b></div>
+      <div style="font-size:16px;color:#555;">历史最悠久</div>
+    </div>
+    <div class="info-card card-purple" style="text-align:center;">
+      <div style="font-size:72px; line-height:1.1;">✈️</div>
+      <div style="font-size:24px;"><b>航空</b></div>
+      <div style="font-size:16px;color:#555;">速度最快</div>
+    </div>
+    <div class="info-card card-gold" style="text-align:center;">
+      <div style="font-size:72px; line-height:1.1;">🛢</div>
+      <div style="font-size:24px;"><b>管道</b></div>
+      <div style="font-size:16px;color:#555;">线路合一</div>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:10px; font-size:22px;">
+    💡 各种运输方式在技术、经济上 <span class="keyword keyword-gold">各有长短</span>，都有自己<span class="keyword keyword-red">最适宜的使用范围</span>。
+  </div>
+</div>
+
+<!-- ============ Slide 8 · 铁路 vs 公路 ============ -->
+<div class="slide" data-slide="8">
+  <div class="slide-title">🚄 铁路 vs 🚚 公路</div>
+  <div class="compare-grid">
+    <div class="compare-card compare-left">
+      <h3>🚄 铁路</h3>
+      <div style="font-size:20px;">
+        <div class="info-card card-green"><b>✅ 优点</b> — <span class="keyword keyword-green">运量大、运速较快、运价较低</span>，受自然因素影响小，连续性好。</div>
+        <div class="info-card card-red"><b>❌ 缺点</b> — 造价高，占地广，<span class="keyword keyword-red">短途成本高</span>。</div>
+        <div class="info-card card-blue"><b>📦 适合</b> — <span class="keyword keyword-blue">大宗、笨重、长途</span> 货运（矿石、煤炭、金属）及客运。</div>
+        <div class="info-card card-gold"><b>📈 趋势</b> — 当代最重要的运输方式，<span class="keyword keyword-gold">高速化</span>。</div>
+      </div>
+    </div>
+    <div class="compare-card compare-right">
+      <h3>🚚 公路</h3>
+      <div style="font-size:20px;">
+        <div class="info-card card-green"><b>✅ 优点</b> — <span class="keyword keyword-green">机动灵活</span>，周转快，装卸方便，适应性强。</div>
+        <div class="info-card card-red"><b>❌ 缺点</b> — 运量小，耗能多，<span class="keyword keyword-red">长途成本高</span>。</div>
+        <div class="info-card card-blue"><b>📦 适合</b> — <span class="keyword keyword-blue">短途</span> 货运和客运，承担<span class="keyword keyword-gold">集散转运</span>任务。</div>
+        <div class="info-card card-gold"><b>📈 趋势</b> — 发展最快，应用最广，地位日趋重要。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 9 · 水路 vs 航空 ============ -->
+<div class="slide" data-slide="9">
+  <div class="slide-title">🚢 水路 vs ✈️ 航空</div>
+  <div class="compare-grid">
+    <div class="compare-card compare-left">
+      <h3>🚢 水路</h3>
+      <div style="font-size:20px;">
+        <div class="info-card card-green"><b>✅ 优点</b> — <span class="keyword keyword-green">运量大、投资少、成本低</span>（尤其海运）。</div>
+        <div class="info-card card-red"><b>❌ 缺点</b> — <span class="keyword keyword-red">速度慢</span>，灵活性差，受水文气象影响大。</div>
+        <div class="info-card card-blue"><b>📦 适合</b> — 大宗、远程、<span class="keyword keyword-blue">时间要求不高</span>的货物（粮食、矿产）。</div>
+        <div class="info-card card-gold"><b>📈 趋势</b> — 国际间大宗货运的主要方式，<span class="keyword keyword-gold">大型化、专业化</span>。</div>
+      </div>
+    </div>
+    <div class="compare-card compare-right">
+      <h3>✈️ 航空</h3>
+      <div style="font-size:20px;">
+        <div class="info-card card-green"><b>✅ 优点</b> — <span class="keyword keyword-green">速度快、效率高</span>。</div>
+        <div class="info-card card-red"><b>❌ 缺点</b> — 运量小，能耗大，<span class="keyword keyword-red">运费高、投资大</span>，技术要求严格。</div>
+        <div class="info-card card-blue"><b>📦 适合</b> — 以<span class="keyword keyword-blue">客运</span>为主，货运多为<span class="keyword keyword-gold">轻型、贵重、急需</span>物品。</div>
+        <div class="info-card card-gold"><b>📈 趋势</b> — 大型化、高速化、专业化。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 10 · 管道 + 方式选择原则 ============ -->
+<div class="slide" data-slide="10">
+  <div class="slide-title">🛢 管道运输 &amp; 方式的选择</div>
+  <div class="slide-subtitle">"多、快、好、省" 四字原则</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="360" height="320" viewBox="0 0 360 320" class="hand-drawn">
+        <!-- pipe cross section -->
+        <rect x="20" y="80" width="320" height="50" rx="25" fill="#c8880a" opacity="0.3"/>
+        <rect x="20" y="80" width="320" height="50" rx="25" fill="none" stroke="#c8880a" stroke-width="4"/>
+        <!-- inner flow -->
+        <line x1="40" y1="105" x2="330" y2="105" stroke="#4a90d9" stroke-width="3" stroke-dasharray="14 8" class="flow-arrow" marker-end="url(#arr-blue)"/>
+        <circle cx="60" cy="105" r="5" fill="#4a90d9"/>
+        <circle cx="130" cy="105" r="5" fill="#4a90d9"/>
+        <circle cx="200" cy="105" r="5" fill="#4a90d9"/>
+        <circle cx="270" cy="105" r="5" fill="#4a90d9"/>
+        <!-- label pipe -->
+        <text x="180" y="55" font-size="20" text-anchor="middle" fill="#c8880a" font-weight="bold">线路 = 运具</text>
+        <text x="180" y="155" font-size="16" text-anchor="middle" fill="#888">气 · 液 · 粉末状固体 连续流动</text>
+        <!-- station source -->
+        <rect x="15" y="180" width="60" height="50" rx="4" fill="#5a9e6f"/>
+        <text x="45" y="210" font-size="14" text-anchor="middle" fill="#fff">源头</text>
+        <text x="45" y="245" font-size="13" text-anchor="middle" fill="#5a9e6f">塔里木</text>
+        <!-- pipe to dest -->
+        <rect x="85" y="195" width="190" height="20" rx="10" fill="#c8880a" opacity="0.5"/>
+        <line x1="85" y1="205" x2="275" y2="205" stroke="#c8880a" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#arr-gold)"/>
+        <!-- station dest -->
+        <rect x="285" y="180" width="60" height="50" rx="4" fill="#e06b6b"/>
+        <text x="315" y="210" font-size="14" text-anchor="middle" fill="#fff">终点</text>
+        <text x="315" y="245" font-size="13" text-anchor="middle" fill="#e06b6b">上海</text>
+        <text x="180" y="290" font-size="18" text-anchor="middle" fill="#2c3e50" font-weight="bold">例：西气东输</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-gold"><b>🛢 管道 · 优点</b> — 运量大、<span class="keyword keyword-gold">损耗小</span>、连续性强、平稳安全。</div>
+      <div class="info-card card-red"><b>🛢 管道 · 缺点</b> — 投资大、灵活性差、只能<span class="keyword keyword-red">单向运输</span>。</div>
+      <div class="info-card card-blue"><b>📦 货运选择</b> — 依据货物<span class="keyword keyword-blue">性质、数量、运距、价格、时效</span>。</div>
+      <div class="info-card card-green"><b>👥 客运选择</b> — 依据<span class="keyword keyword-green">价格、安全、时效、目的</span>。</div>
+      <div class="info-card card-purple"><b>⭐ 总原则</b> — <span class="keyword keyword-purple">多、快、好、省</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 11 · 交通线区位 · 自然因素 ============ -->
+<div class="slide" data-slide="11">
+  <div class="slide-title">七、交通线区位因素 · 自然</div>
+  <div class="slide-subtitle">地形 · 水文 · 地质 · 气候</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="360" height="320" viewBox="0 0 360 320" class="hand-drawn">
+        <!-- sky + sun + cloud -->
+        <rect x="0" y="0" width="360" height="100" fill="#eaf4fd"/>
+        <circle cx="60" cy="35" r="16" fill="#FFD54F" stroke="#c8880a" stroke-width="2"/>
+        <ellipse cx="200" cy="40" rx="28" ry="10" fill="#fff" opacity="0.9"/>
+        <ellipse cx="225" cy="46" rx="22" ry="8" fill="#fff" opacity="0.9"/>
+        <!-- rain from cloud -->
+        <line x1="190" y1="55" x2="188" y2="68" stroke="#4a90d9" stroke-width="2"/>
+        <line x1="205" y1="55" x2="203" y2="68" stroke="#4a90d9" stroke-width="2"/>
+        <line x1="220" y1="55" x2="218" y2="68" stroke="#4a90d9" stroke-width="2"/>
+        <!-- mountains -->
+        <path d="M0 220 L50 140 L90 180 L140 100 L200 180 L250 120 L320 180 L360 150 L360 260 L0 260 Z" fill="#8a9a7a" opacity="0.75"/>
+        <path d="M0 220 L50 140 L90 180 L140 100 L200 180 L250 120 L320 180 L360 150" fill="none" stroke="#6a7a5a" stroke-width="2"/>
+        <!-- tunnel through mountain -->
+        <ellipse cx="140" cy="165" rx="18" ry="10" fill="#2c3e50"/>
+        <text x="140" y="155" font-size="12" text-anchor="middle" fill="#c8880a">隧道</text>
+        <!-- zigzag railway on slope -->
+        <polyline points="200,200 220,185 200,170 230,160 210,145 240,135" fill="none" stroke="#e06b6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="260" y="150" font-size="13" fill="#e06b6b">之字形</text>
+        <!-- river -->
+        <path d="M0 280 Q80 270 160 285 Q240 295 360 275" fill="none" stroke="#4a90d9" stroke-width="5"/>
+        <text x="50" y="305" font-size="14" fill="#4a90d9">河流 · 跨河</text>
+        <!-- fault line -->
+        <line x1="280" y1="160" x2="310" y2="200" stroke="#7b68ee" stroke-width="3" stroke-dasharray="5 3"/>
+        <text x="300" y="220" font-size="12" fill="#7b68ee">断层</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-green"><b>🏞 地形 · 平原</b> — 限制少，少占<span class="keyword keyword-red">耕地</span>，处理好与农田、城镇关系。</div>
+      <div class="info-card card-green"><b>🏔 地形 · 山地</b> — 沿<span class="keyword keyword-green">等高线</span>修筑，陡坡呈 <span class="keyword keyword-gold">"之"字形</span> 或开凿<span class="keyword keyword-blue">隧道</span>。</div>
+      <div class="info-card card-blue"><b>🌊 水文</b> — 避开<span class="keyword keyword-blue">沼泽地</span>，减少跨河、桥涵总长度。</div>
+      <div class="info-card card-purple"><b>⛰ 地质</b> — 避开断层、滑坡、泥石流；隧道选<span class="keyword keyword-purple">背斜</span>，避开向斜。</div>
+      <div class="info-card card-red"><b>🌧 气候</b> — 注意暴雨、大风、冻土、积雪；决定桥涵孔径与路基高低。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 12 · 交通线区位 · 人文因素 ============ -->
+<div class="slide" data-slide="12">
+  <div class="slide-title">八、交通线区位因素 · 人文</div>
+  <div class="slide-subtitle">经济 · 社会 · 技术</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="360" height="320" viewBox="0 0 360 320" class="hand-drawn">
+        <!-- central city -->
+        <circle cx="180" cy="160" r="38" fill="#e06b6b" opacity="0.85"/>
+        <text x="180" y="158" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">大城市</text>
+        <text x="180" y="176" font-size="12" text-anchor="middle" fill="#fff">CBD</text>
+        <!-- satellite towns -->
+        <circle cx="60" cy="60" r="18" fill="#4a90d9" opacity="0.8"/>
+        <text x="60" y="65" font-size="11" text-anchor="middle" fill="#fff">镇A</text>
+        <circle cx="300" cy="60" r="18" fill="#4a90d9" opacity="0.8"/>
+        <text x="300" y="65" font-size="11" text-anchor="middle" fill="#fff">镇B</text>
+        <circle cx="60" cy="260" r="18" fill="#4a90d9" opacity="0.8"/>
+        <text x="60" y="265" font-size="11" text-anchor="middle" fill="#fff">镇C</text>
+        <circle cx="300" cy="260" r="18" fill="#4a90d9" opacity="0.8"/>
+        <text x="300" y="265" font-size="11" text-anchor="middle" fill="#fff">镇D</text>
+        <!-- national road (直达, thick) -->
+        <line x1="60" y1="60" x2="300" y2="260" stroke="#c8880a" stroke-width="5" opacity="0.9"/>
+        <line x1="60" y1="260" x2="300" y2="60" stroke="#c8880a" stroke-width="5" opacity="0.9"/>
+        <!-- provincial road (curvy, through settlements) -->
+        <path d="M60 60 Q120 130 180 160 Q240 190 300 260" fill="none" stroke="#5a9e6f" stroke-width="3" stroke-dasharray="10 5"/>
+        <path d="M60 260 Q120 200 180 160 Q240 120 300 60" fill="none" stroke="#5a9e6f" stroke-width="3" stroke-dasharray="10 5"/>
+        <!-- legend -->
+        <rect x="10" y="5" width="14" height="4" fill="#c8880a"/>
+        <text x="28" y="11" font-size="12" fill="#c8880a">国道 · 直达</text>
+        <rect x="10" y="18" width="14" height="3" fill="#5a9e6f"/>
+        <text x="28" y="23" font-size="12" fill="#5a9e6f">省道 · 穿村</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-blue"><b>💼 经济 · 国道干线</b> — 以 <span class="keyword keyword-blue">直达运输</span> 为主，兼顾沿线重要经济点。</div>
+      <div class="info-card card-gold"><b>🏘 经济 · 省道</b> — 以满足<span class="keyword keyword-gold">地方经济、居民出行</span>为主，通过居民点、车站、码头。</div>
+      <div class="info-card card-red"><b>🛡 社会</b> — 巩固<span class="keyword keyword-red">国防</span>、加强<span class="keyword keyword-red">民族团结</span>、促进边疆和革命老区发展。</div>
+      <div class="info-card card-purple"><b>🔬 技术</b> — 克服不利自然条件，充分发挥<span class="keyword keyword-purple">先进科技</span>的突出作用。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 13 · "低高大小"原则 ============ -->
+<div class="slide" data-slide="13">
+  <div class="slide-title">九、线路选择口诀："低 · 高 · 大 · 小"</div>
+  <div class="slide-row">
+    <div class="slide-col">
+      <div class="info-card card-gold" style="font-size:22px;"><b>① 成本 "低" 💰</b> — 山区线路<span class="keyword keyword-gold">起伏要小</span>、隧道要少；平原线路要<span class="keyword keyword-gold">直</span>、桥梁要少。</div>
+      <div class="info-card card-green" style="font-size:22px;"><b>② 安全性 "高" 🛡</b> — 山区线路不能太<span class="keyword keyword-red">陡</span>，平原不宜经过<span class="keyword keyword-blue">沼泽区</span>。</div>
+      <div class="info-card card-blue" style="font-size:22px;"><b>③ 经济效益 "大" 📈</b> — 地方公路尽量多经过居民点，国道/高速以<span class="keyword keyword-blue">直达</span>为主。</div>
+      <div class="info-card card-red" style="font-size:22px;"><b>④ 生态破坏 "小" 🌱</b> — 平原少占农田、不破坏水利；山区保护植被。</div>
+    </div>
+    <div class="slide-col-svg">
+      <div style="text-align:center; line-height:1.3;">
+        <div style="font-family:var(--font-title); font-size:88px; color:var(--gold); font-weight:bold;">低 💰</div>
+        <div style="font-family:var(--font-title); font-size:88px; color:var(--green); font-weight:bold;">高 🛡</div>
+        <div style="font-family:var(--font-title); font-size:88px; color:var(--blue); font-weight:bold;">大 📈</div>
+        <div style="font-family:var(--font-title); font-size:88px; color:var(--red); font-weight:bold;">小 🌱</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 14 · 港口/车站/航空港（真实图片） ============ -->
+<div class="slide" data-slide="14">
+  <div class="slide-title">十、交通运输"点"的区位</div>
+  <div class="slide-subtitle">港口 · 汽车站 · 航空港 · 真实案例</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; flex:1;">
+    <div class="media-card" style="margin:0; padding:12px;">
+      <span class="media-card-badge">📷 上海港</span>
+      <div class="media-card-title" style="font-size:20px;">⚓ 洋山深水港</div>
+      <div class="media-card-body" style="min-height:140px; max-height:180px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Port_of_Shanghai%2C_Yangshan_Deep-water_Harbour_Zone%2C_Entrance.jpg" alt="上海洋山深水港" loading="lazy">
+      </div>
+      <div style="font-size:16px; line-height:1.4; margin-top:8px;">
+        <b>自然</b>：水域利于<span class="keyword keyword-blue">航行停泊</span>，筑港条件影响港口建设<br>
+        <b>社会</b>：受<span class="keyword keyword-red">腹地</span>与<span class="keyword keyword-red">城市依托</span>影响大<br>
+        <b>选址</b>：海港在<span class="keyword keyword-gold">背风避浪水深</span>海湾
+      </div>
+      <div class="media-card-source" style="font-size:11px;">
+        <span>来源：<a href="https://commons.wikimedia.org/wiki/File:Port_of_Shanghai,_Yangshan_Deep-water_Harbour_Zone,_Entrance.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+      </div>
+    </div>
+    <div class="media-card" style="margin:0; padding:12px; border-color:var(--green);">
+      <span class="media-card-badge" style="background:var(--green);">📷 丽江汽车站</span>
+      <div class="media-card-title" style="font-size:20px;">🚌 长途汽车站</div>
+      <div class="media-card-body" style="min-height:140px; max-height:180px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Lijiang_long_distance_bus_station_2.JPG" alt="丽江长途汽车站" loading="lazy">
+      </div>
+      <div style="font-size:16px; line-height:1.4; margin-top:8px;">
+        <b>自然</b>：影响小，需<span class="keyword keyword-green">开阔平坦</span><br>
+        <b>社会</b>：规模受<span class="keyword keyword-red">经济水平</span>制约<br>
+        <b>选址</b>：<span class="keyword keyword-gold">城市干线两侧</span>，与市内干道方便连接
+      </div>
+      <div class="media-card-source" style="font-size:11px;">
+        <span>来源：<a href="https://commons.wikimedia.org/wiki/File:Lijiang_long_distance_bus_station_2.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+      </div>
+    </div>
+    <div class="media-card" style="margin:0; padding:12px; border-color:var(--purple);">
+      <span class="media-card-badge" style="background:var(--purple);">📷 首都机场</span>
+      <div class="media-card-title" style="font-size:20px;">✈️ 北京首都机场</div>
+      <div class="media-card-body" style="min-height:140px; max-height:180px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Beijing_Capital_International_Airport_Aerial_Photo_%2820240113213409%29.jpg" alt="北京首都国际机场航拍" loading="lazy">
+      </div>
+      <div style="font-size:16px; line-height:1.4; margin-top:8px;">
+        <b>自然</b>：受地形气候地质水文<span class="keyword keyword-red">影响较大</span><br>
+        <b>社会</b>：人流物流集中的<span class="keyword keyword-gold">城市外围</span><br>
+        <b>选址</b>：<span class="keyword keyword-purple">地势较高</span>、晴天多、距城较远但交通便利
+      </div>
+      <div class="media-card-source" style="font-size:11px;">
+        <span>来源：<a href="https://commons.wikimedia.org/wiki/File:Beijing_Capital_International_Airport_Aerial_Photo_(20240113213409).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 15 · Section 2 divider ============ -->
+<div class="slide section-slide" data-slide="15">
+  <div class="section-number">02</div>
+  <div class="section-divider"></div>
+  <div class="section-main-title">交通运输布局对区域发展的影响</div>
+  <div class="section-divider"></div>
+  <div style="font-family:var(--font-subtitle); font-size:22px; color:#999; margin-top:10px;">How Transportation Shapes Regions</div>
+</div>
+
+<!-- ============ Slide 16 · 促进区域经济发展 · 一带一路（真实图片） ============ -->
+<div class="slide" data-slide="16">
+  <div class="slide-title">一、促进区域经济发展</div>
+  <div class="slide-subtitle">要素流动 · 时空收缩 · 一带一路</div>
+  <div class="slide-row">
+    <div class="slide-col-svg" style="flex:0 1 50%;">
+      <div class="media-card" style="margin:0; padding:12px; width:100%;">
+        <span class="media-card-badge">🌏 一带一路</span>
+        <div class="media-card-title" style="font-size:20px;">陆上丝绸之路 &amp; 海上丝绸之路</div>
+        <div class="media-card-body" style="min-height:200px; max-height:320px; background:#fff;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/One-belt-one-road.svg" alt="一带一路倡议路线图" loading="lazy" style="background:#fff;">
+        </div>
+        <div class="media-card-caption" style="font-size:14px;">红：中国 · 橙：亚投行成员 · 黑线：陆上丝路 · 蓝线：海上丝路</div>
+        <div class="media-card-source" style="font-size:11px;">
+          <span>来源：<a href="https://commons.wikimedia.org/wiki/File:One-belt-one-road.svg" target="_blank" rel="noopener">Wikimedia Commons</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-blue"><b>① 要素流动</b> — 促使<span class="keyword keyword-blue">资源、产品、设备、劳动力</span>合理流动，实现空间优化配置。</div>
+      <div class="info-card card-gold"><b>② 时空收缩</b> — 便捷交通缩短<span class="keyword keyword-gold">时空距离</span>，经济活动辐射其他区域甚至世界各地。</div>
+      <div class="info-card card-green"><b>③ 带动行业</b> — 拉动<span class="keyword keyword-green">原材料、能源、建筑、旅游</span>等行业，增加就业。</div>
+      <div class="info-card card-red"><b>④ 一带一路</b> — <span class="keyword keyword-red">基础设施互联互通</span>是优先领域：公路、铁路、航空、水路、油气管道、电网、通信网络。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 17 · 影响聚落 · 沿河设城 ============ -->
+<div class="slide" data-slide="17">
+  <div class="slide-title">二、影响聚落发展 · 沿河设城</div>
+  <div class="slide-subtitle">河运节点塑造城市分布</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="380" height="320" viewBox="0 0 380 320" class="hand-drawn">
+        <!-- main river: upstream(left-top) → downstream(right-bottom) -->
+        <path d="M30 40 Q50 90 40 140 Q30 190 100 220 Q180 250 260 235 Q320 222 370 260" fill="none" stroke="#4a90d9" stroke-width="8" opacity="0.65"/>
+        <!-- tributary joining at confluence -->
+        <path d="M180 30 Q170 100 100 150 Q70 175 100 220" fill="none" stroke="#4a90d9" stroke-width="6" opacity="0.55"/>
+        <!-- waterfall marker (upstream endpoint) -->
+        <circle cx="40" cy="120" r="12" fill="#c8880a"/>
+        <text x="40" y="125" font-size="13" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
+        <text x="58" y="108" font-size="14" fill="#c8880a" font-weight="bold">① 起点/终点</text>
+        <text x="58" y="123" font-size="11" fill="#888">（赣州）</text>
+        <!-- confluence -->
+        <circle cx="100" cy="220" r="12" fill="#e06b6b"/>
+        <text x="100" y="225" font-size="13" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
+        <text x="118" y="215" font-size="14" fill="#e06b6b" font-weight="bold">② 交汇处</text>
+        <text x="118" y="230" font-size="11" fill="#888">（武汉）</text>
+        <!-- crossing point: bridge on mid-river -->
+        <rect x="210" y="228" width="36" height="10" fill="#7b68ee"/>
+        <circle cx="228" cy="233" r="10" fill="#7b68ee"/>
+        <text x="228" y="238" font-size="13" text-anchor="middle" fill="#fff" font-weight="bold">3</text>
+        <text x="248" y="225" font-size="14" fill="#7b68ee" font-weight="bold">③ 过河点</text>
+        <text x="248" y="240" font-size="11" fill="#888">（伦敦）</text>
+        <!-- river mouth -->
+        <circle cx="370" cy="260" r="12" fill="#5a9e6f"/>
+        <text x="370" y="265" font-size="13" text-anchor="middle" fill="#fff" font-weight="bold">4</text>
+        <text x="260" y="290" font-size="14" fill="#5a9e6f" font-weight="bold">④ 河口 </text>
+        <text x="260" y="305" font-size="11" fill="#888">（上海、广州）</text>
+        <!-- sea hint -->
+        <path d="M350 280 Q365 288 380 280" fill="none" stroke="#4a90d9" stroke-width="2" opacity="0.5"/>
+        <text x="190" y="22" font-size="18" text-anchor="middle" fill="#4a90d9" font-weight="bold">四种沿河城市区位</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-gold"><b>① 河运起点/终点</b> — 水道变窄或有瀑布急流，货物<span class="keyword keyword-gold">转运</span>地。例：<span class="keyword keyword-red">赣州</span>。</div>
+      <div class="info-card card-red"><b>② 河流交汇处</b> — 三个方向水运优势，<span class="keyword keyword-red">人流物流集散</span>。例：宜宾、重庆、<span class="keyword keyword-red">武汉</span>。</div>
+      <div class="info-card card-green"><b>③ 河口处</b> — 上通河流，下通海外，<span class="keyword keyword-green">河海联运</span>。例：<span class="keyword keyword-red">上海、广州</span>、加尔各答。</div>
+      <div class="info-card card-purple"><b>④ 过河点</b> — 水陆交通便利，人流物流集中。例：<span class="keyword keyword-purple">伦敦、布达佩斯、金边</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 18 · 影响商业网点 ============ -->
+<div class="slide" data-slide="18">
+  <div class="slide-title">三、影响商业网点分布</div>
+  <div class="slide-subtitle">交通最优原则</div>
+  <div class="slide-row">
+    <div class="slide-col-svg">
+      <svg width="360" height="320" viewBox="0 0 360 320" class="hand-drawn">
+        <!-- ring road -->
+        <circle cx="180" cy="170" r="120" fill="none" stroke="#888" stroke-width="6" opacity="0.55"/>
+        <!-- arterial roads -->
+        <line x1="180" y1="40" x2="180" y2="300" stroke="#888" stroke-width="6" opacity="0.55"/>
+        <line x1="50" y1="170" x2="310" y2="170" stroke="#888" stroke-width="6" opacity="0.55"/>
+        <!-- CBD center -->
+        <rect x="158" y="148" width="44" height="44" fill="#e06b6b"/>
+        <text x="180" y="175" font-size="16" text-anchor="middle" fill="#fff" font-weight="bold">CBD</text>
+        <!-- secondary shops at ring×arterial intersections -->
+        <circle cx="180" cy="50" r="14" fill="#c8880a"/>
+        <text x="180" y="55" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">商</text>
+        <circle cx="180" cy="290" r="14" fill="#c8880a"/>
+        <text x="180" y="295" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">商</text>
+        <circle cx="60" cy="170" r="14" fill="#c8880a"/>
+        <text x="60" y="175" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">商</text>
+        <circle cx="300" cy="170" r="14" fill="#c8880a"/>
+        <text x="300" y="175" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">商</text>
+        <!-- labels -->
+        <text x="180" y="25" font-size="16" text-anchor="middle" fill="#2c3e50" font-weight="bold">干道 × 环路交会 = 理想网点</text>
+        <text x="180" y="315" font-size="14" text-anchor="middle" fill="#888">中心地价最高 · CBD</text>
+      </svg>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-red"><b>交通最优原则</b> — 商业网点的建立以<span class="keyword keyword-red">便捷交通</span>为第一要素，才能吸引大量购物者。</div>
+      <div class="info-card card-blue"><b>山区 vs 平原</b> — 山区交通闭塞，商业网点<span class="keyword keyword-blue">稀少</span>且多沿公路；平原地势平坦，密度<span class="keyword keyword-red">大于山区</span>。</div>
+      <div class="info-card card-gold"><b>看地价 💰</b> — 地价最高处 = <span class="keyword keyword-gold">中心商务区</span>；次高峰 = 次级商业区。</div>
+      <div class="info-card card-green"><b>看路网 🛣</b> — 城市<span class="keyword keyword-green">路网密度大</span>的地区，人流物流大，网点密集。</div>
+      <div class="info-card card-purple"><b>看交会点 ✖️</b> — 干道 × 环路<span class="keyword keyword-purple">交会处</span>是理想网点区位。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 19 · 填空 ============ -->
+<div class="slide" data-slide="19">
+  <div class="slide-title">📝 必背知识 · 填空练习</div>
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="info-card card-blue" style="font-size:24px;line-height:2;">
+      1. 交通运输布局的目的：实现区域运输的<span class="blank" data-answer="合理化">合理化</span>，以获得最大的<span class="blank" data-answer="经济效益">经济效益</span>和<span class="blank" data-answer="社会效益">社会效益</span>。<br>
+      2. 五种主要运输方式：铁路、公路、<span class="blank" data-answer="水路">水路</span>、<span class="blank" data-answer="航空">航空</span>、<span class="blank" data-answer="管道">管道</span>。<br>
+      3. 铁路适合 <span class="blank" data-answer="大宗、笨重、长途">大宗、笨重、长途</span> 货运；航空适合 <span class="blank" data-answer="轻型、贵重、急需">轻型、贵重、急需</span> 物品。<br>
+      4. 山区修筑铁路要沿<span class="blank" data-answer="等高线">等高线</span>延伸，陡坡上呈<span class="blank" data-answer="之字形">之字形</span>弯曲。<br>
+      5. 隧道开凿要选<span class="blank" data-answer="背斜">背斜</span>构造，避开<span class="blank" data-answer="断层">断层</span>和向斜。<br>
+      6. 线路选择口诀："<span class="blank" data-answer="低">低</span>、<span class="blank" data-answer="高">高</span>、<span class="blank" data-answer="大">大</span>、<span class="blank" data-answer="小">小</span>" —— 成本低、安全高、效益大、破坏小。<br>
+      7. "一带一路"建设的优先领域是<span class="blank" data-answer="基础设施互联互通">基础设施互联互通</span>。
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button onclick="revealAllBlanks(this)" style="padding:10px 30px;border:2px dashed var(--red);background:rgba(224,107,107,0.05);border-radius:20px;font-family:var(--font-title);font-size:20px;color:var(--red);cursor:pointer;">✨ 显示所有答案</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 20 · 选择题 ============ -->
+<div class="slide" data-slide="20">
+  <div class="slide-title">📝 选择题练习</div>
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="info-card" style="font-size:22px;margin-top:8px;">
+      <b>📝 题目 1：</b>下列货物最适合采用<b>管道</b>运输的是？<br>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">A. 新鲜蔬菜</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'correct')">B. 大庆到北京的天然气</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">C. 汽车零部件</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">D. 跨国旅游客流</label>
+    </div>
+    <div class="info-card" style="font-size:22px;margin-top:8px;">
+      <b>📝 题目 2：</b>山区铁路线常呈"之"字形弯曲，主要是为了？<br>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">A. 增加线路长度收取更多票价</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">B. 方便游客欣赏沿途风景</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'correct')">C. 减小坡度，克服地形起伏，保证行车安全</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">D. 节省钢材用量</label>
+    </div>
+    <div class="info-card" style="font-size:22px;margin-top:8px;">
+      <b>📝 题目 3：</b>影响港口建设的<b>最主要</b>自然因素是？<br>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">A. 气温高低</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'correct')">B. 水域条件与陆域筑港条件</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">C. 当地光照时长</label>
+      <label style="cursor:pointer;display:block;padding:4px 0;" onclick="checkAnswer(this,'wrong')">D. 土壤肥力</label>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Slide 21 · Mini-game ============ -->
+<div class="slide" data-slide="21">
+  <div class="slide-title">🎮 选对运输方式！</div>
+  <div class="slide-subtitle">给下面的场景选择最适合的运输方式</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; flex:1; padding:5px;">
+    <div class="game-card" data-id="1" data-correct="rail">
+      <div class="game-card-label">
+        <span class="emoji">⛏</span>
+        山西到上海<br>运送 <b>5 万吨煤炭</b>
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+    <div class="game-card" data-id="2" data-correct="air">
+      <div class="game-card-label">
+        <span class="emoji">💉</span>
+        北京到广州<br>运送 <b>急救血浆</b>
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+    <div class="game-card" data-id="3" data-correct="pipe">
+      <div class="game-card-label">
+        <span class="emoji">🛢</span>
+        西气东输<br><b>天然气</b> 从塔里木到上海
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+    <div class="game-card" data-id="4" data-correct="road">
+      <div class="game-card-label">
+        <span class="emoji">🥬</span>
+        郊区菜农<br>把 <b>新鲜蔬菜</b> 送进市区
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+    <div class="game-card" data-id="5" data-correct="water">
+      <div class="game-card-label">
+        <span class="emoji">🌾</span>
+        巴西大豆<br>跨洋运往 <b>中国沿海</b>
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+    <div class="game-card" data-id="6" data-correct="rail">
+      <div class="game-card-label">
+        <span class="emoji">🚄</span>
+        北京到武汉<br><b>商务客运</b>（千公里）
+      </div>
+      <div class="game-opts">
+        <button class="game-opt-btn" onclick="gamePick(this,'rail')">🚄 铁路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'road')">🚚 公路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'water')">🚢 水路</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'air')">✈️ 航空</button>
+        <button class="game-opt-btn" onclick="gamePick(this,'pipe')">🛢 管道</button>
+      </div>
+    </div>
+  </div>
+  <div id="game-feedback" style="text-align:center; font-size:22px; margin-top:10px;">
+    💡 已答 <span id="game-score" style="color:var(--gold); font-weight:bold;">0</span> / 6 题
+  </div>
+</div>
+
+<!-- ============ Slide 22 · 小结 ============ -->
+<div class="slide" data-slide="22">
+  <div class="slide-title">📚 本章小结</div>
+  <div class="slide-subtitle">区域发展 ↔ 交通运输布局 双向关系</div>
+  <div class="slide-row">
+    <div class="slide-col">
+      <div class="info-card card-blue" style="font-size:22px;"><b>第一节</b> — 区域发展<span class="keyword keyword-blue">决定</span>交通布局</div>
+      <div class="info-card card-gold" style="font-size:20px;">① 布局任务 = 组织线网场站、分配客货流</div>
+      <div class="info-card card-gold" style="font-size:20px;">② 影响因素 = 人文 + 自然 + 未来趋势</div>
+      <div class="info-card card-gold" style="font-size:20px;">③ 五大原则 / 五种方式</div>
+      <div class="info-card card-gold" style="font-size:20px;">④ 线路区位 = 自然 + 人文，选择要"低高大小"</div>
+    </div>
+    <div class="slide-col">
+      <div class="info-card card-red" style="font-size:22px;"><b>第二节</b> — 交通布局<span class="keyword keyword-red">影响</span>区域发展</div>
+      <div class="info-card card-green" style="font-size:20px;">① 促进区域经济发展，要素流动+时空收缩</div>
+      <div class="info-card card-green" style="font-size:20px;">② 影响聚落发展：沿河设城四种区位</div>
+      <div class="info-card card-green" style="font-size:20px;">③ 影响商业网点：交通最优原则</div>
+      <div class="info-card card-purple" style="font-size:22px; text-align:center;">🌍 <b>"要想富，先修路"</b></div>
+    </div>
+  </div>
+  <div class="chain-box" style="margin-top:12px;">
+    <div class="chain-step step-blue">区域发展</div>
+    <span class="chain-arrow">⇄</span>
+    <div class="chain-step step-gold">交通运输布局</div>
+    <span class="chain-arrow">⇄</span>
+    <div class="chain-step step-green">经济社会发展</div>
+  </div>
+</div>
+
+<!--
+  导航栏 - insert right before the closing body tag.
+  装配时，按总 slide 数 N 生成 N 个 .nav-dot：
+    <button class="nav-dot[ active]" data-target="{{INDEX}}" title="{{TITLE}}"></button>
+  第 0 个（封面）加 active 类。
+  NOTE: do NOT write the literal closing body string in this comment.
+  Assembly scripts may use str.replace() on that marker, and a stray copy
+  here would be replaced first, clobbering the file silently.
+-->
+<div class="nav-bar">
+  <button class="nav-dot active" data-target="0" title="封面"></button>
+  <button class="nav-dot" data-target="1" title="第一节"></button>
+  <button class="nav-dot" data-target="2" title="任务与目的"></button>
+  <button class="nav-dot" data-target="3" title="影响因素"></button>
+  <button class="nav-dot" data-target="4" title="布局原则"></button>
+  <button class="nav-dot" data-target="5" title="需求与规模"></button>
+  <button class="nav-dot" data-target="6" title="资金影响"></button>
+  <button class="nav-dot" data-target="7" title="五种方式"></button>
+  <button class="nav-dot" data-target="8" title="铁路vs公路"></button>
+  <button class="nav-dot" data-target="9" title="水路vs航空"></button>
+  <button class="nav-dot" data-target="10" title="管道+选择"></button>
+  <button class="nav-dot" data-target="11" title="自然因素"></button>
+  <button class="nav-dot" data-target="12" title="人文因素"></button>
+  <button class="nav-dot" data-target="13" title="低高大小"></button>
+  <button class="nav-dot" data-target="14" title="点的区位"></button>
+  <button class="nav-dot" data-target="15" title="第二节"></button>
+  <button class="nav-dot" data-target="16" title="促进经济"></button>
+  <button class="nav-dot" data-target="17" title="沿河设城"></button>
+  <button class="nav-dot" data-target="18" title="商业网点"></button>
+  <button class="nav-dot" data-target="19" title="填空"></button>
+  <button class="nav-dot" data-target="20" title="选择题"></button>
+  <button class="nav-dot" data-target="21" title="小游戏"></button>
+  <button class="nav-dot" data-target="22" title="小结"></button>
+  <span class="nav-page">1 / 23</span>
+</div>
+
+<script>
+// ================================================================
+//  book2courseware · runtime scripts
+//  提供：翻页、填空、选择题反馈
+//  任何课件都应原封不动地嵌入这段 <script>
+//
+//  NOTE on the closure bug we used to have:
+//  Previously this file cached `slides`, `current`, and `total` in the IIFE
+//  closure. That broke two ways:
+//    (1) editor.html later overrides `window.goTo` with a version that
+//        re-queries the DOM. The keydown handler below calls `window.goTo`
+//        (via bare `goTo`), so navigation worked, but the cached `current`
+//        here never updated — so `goTo(current + 1)` kept resolving to
+//        `goTo(1)` forever after the first press and the deck got stuck.
+//    (2) After undo/redo or add/delete-slide, the DOM gets new .slide nodes
+//        but the cached `slides` NodeList still pointed at stale / detached
+//        elements, so any subsequent non-editor.html path stopped working.
+//  Fix: every lookup (slides list, current index) is re-queried on demand.
+//  window.goTo reads `.slide.active` from the DOM; editor.html can still
+//  override it freely.
+// ================================================================
+(function() {
+  function allSlides() { return document.querySelectorAll('.slide'); }
+  function allDots()   { return document.querySelectorAll('.nav-dot'); }
+  function currentIdx() {
+    var slides = allSlides();
+    for (var i = 0; i < slides.length; i++) if (slides[i].classList.contains('active')) return i;
+    return 0;
+  }
+
+  window.goTo = function(index) {
+    var slides = allSlides();
+    var dots = allDots();
+    var pageLabel = document.querySelector('.nav-page');
+    var total = slides.length;
+    if (total === 0) return;
+    if (index < 0) index = 0;
+    if (index >= total) index = total - 1;
+    slides.forEach(function(s, i) { s.classList.toggle('active', i === index); });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+    if (pageLabel) pageLabel.textContent = (index + 1) + ' / ' + total;
+    window.scrollTo(0, 0);
+  };
+
+  document.addEventListener('keydown', function(e) {
+    // 编辑器激活或在输入框里时，不抢键盘
+    if (document.activeElement) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.getAttribute('contenteditable')) return;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); window.goTo(currentIdx() + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); window.goTo(currentIdx() - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); window.goTo(0); }
+    else if (e.key === 'End')  { e.preventDefault(); window.goTo(allSlides().length - 1); }
+    // ArrowUp/Down 交给浏览器原生滚动
+  });
+
+  // Delegate dot clicks so it survives rebuildNavDots in editor.html
+  document.addEventListener('click', function(e) {
+    var dot = e.target.closest && e.target.closest('.nav-dot');
+    if (!dot) return;
+    var t = dot.getAttribute('data-target');
+    if (t != null) window.goTo(parseInt(t, 10));
+  });
+
+  // 触屏滑动翻页
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) window.goTo(currentIdx() + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // 填空：点击揭示答案 (delegated so restored/added blanks still work)
+  document.addEventListener('click', function(e) {
+    var blank = e.target.closest && e.target.closest('.blank');
+    if (!blank) return;
+    if (blank.getAttribute('onclick')) return;
+    blank.classList.toggle('revealed');
+  });
+})();
+
+// ================================================================
+//  选择题反馈 · 在 label 的 onclick 里调用 checkAnswer(this, 'correct'|'wrong')
+// ================================================================
+function checkAnswer(label, type) {
+  if (label.dataset.answered) return;
+  var card = label.closest('.info-card');
+  card.querySelectorAll('label').forEach(function(l) { l.dataset.answered = '1'; });
+  if (type === 'correct') {
+    label.classList.add('answer-correct');
+    label.innerHTML += ' <b style="color:var(--green);">✅ 正确！</b>';
+  } else {
+    label.classList.add('answer-wrong');
+    label.innerHTML += ' <b style="color:var(--red);">❌</b>';
+    // 自动高亮正确答案
+    card.querySelectorAll('label').forEach(function(l) {
+      var click = l.getAttribute('onclick') || '';
+      if (click.indexOf('correct') !== -1) l.classList.add('answer-correct');
+    });
+  }
+}
+
+// ================================================================
+//  揭示当前页所有填空（给 fill-blank-slide 的 "显示全部答案" 按钮用）
+// ================================================================
+function revealAllBlanks(btn) {
+  btn.closest('.slide').querySelectorAll('.blank').forEach(function(b) {
+    b.classList.add('revealed');
+  });
+}
+
+// ================================================================
+//  MINI-GAME · 通用"判断/配对"游戏逻辑
+//  用在 judge-game.html / match-game.html 组件上
+//
+//  HTML 约定：
+//    <div class="game-card" data-id="1" data-correct="radio">
+//      <div class="game-card-label">...</div>
+//      <div class="game-opts">
+//        <button class="game-opt-btn" onclick="gamePick(this,'radio')">无线电</button>
+//        <button class="game-opt-btn" onclick="gamePick(this,'ir')">红外</button>
+//        ...
+//      </div>
+//    </div>
+//    <div id="game-score">0</div>
+//    <div id="game-feedback">...</div>
+//
+//  用 data-correct 标记正确答案，gamePick 会对比并反馈。
+// ================================================================
+(function(){
+  var answered = {};
+  var score = 0;
+  var total = null;
+  window.gamePick = function(btn, pick) {
+    var card = btn.closest('.game-card');
+    var id = card.getAttribute('data-id');
+    if (answered[id]) return;
+    answered[id] = true;
+    var correct = card.getAttribute('data-correct');
+    if (pick === correct) {
+      btn.classList.add('game-correct');
+      score++;
+    } else {
+      btn.classList.add('game-wrong');
+      // Highlight the correct sibling
+      card.querySelectorAll('.game-opt-btn').forEach(function(b) {
+        var oc = b.getAttribute('onclick') || '';
+        if (oc.indexOf("'" + correct + "'") !== -1) b.classList.add('game-correct');
+      });
+    }
+    var scoreEl = document.getElementById('game-score');
+    if (scoreEl) scoreEl.textContent = score;
+    if (total === null) {
+      total = document.querySelectorAll('.game-card').length;
+    }
+    if (Object.keys(answered).length === total) {
+      var fb = document.getElementById('game-feedback');
+      if (fb) fb.innerHTML = '🎉 完成！总得分 <b style="color:var(--gold); font-size:26px;">' + score + ' / ' + total + '</b>';
+    }
+  };
+})();
+</script>
+
+<!--
+  editor.html - bundled in-browser editor (CSS + UI DOM + JS)
+  Insert this file as-is right before the closing body tag in generated courseware.
+  Provides: toggle button (top-right), edit toolbar (hand/pencil mode),
+  SVG editor V2, undo/redo, save/discard, download HTML.
+  Shortcuts: H=hand V=pencil Ctrl+Z/Y=undo/redo Del=delete Esc=deselect
+  Persistence: "Save" writes a snapshot to localStorage['book2ppt:' + pathname];
+  the IIFE restores it on page load, so edits survive refresh without file export.
+  NOTE: this comment must NOT contain the literal closing-body string because
+  assembly scripts may use str.replace() on that marker.
+-->
+
+<style>
+/* ========== EDIT MODE ========== */
+.edit-toolbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 40px;
+  background: #2c3e50; color: #fff; z-index: 2000;
+  display: none; align-items: center; padding: 0 16px; gap: 12px;
+  font-family: system-ui, sans-serif; font-size: 14px;
+}
+.edit-toolbar.active { display: flex; }
+.edit-toolbar button {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; padding: 4px 14px; border-radius: 6px; cursor: pointer;
+  font-size: 13px; transition: all 0.2s;
+}
+.edit-toolbar button:hover { background: rgba(255,255,255,0.3); }
+.edit-toolbar .save-btn { background: #4a90d9; border-color: #4a90d9; }
+.edit-toolbar .save-btn:hover { background: #3a7bc8; }
+.edit-toolbar .exit-btn { background: #e06b6b; border-color: #e06b6b; }
+
+.edit-toggle {
+  position: fixed; top: 8px; right: 12px; z-index: 2001;
+  background: rgba(44,62,80,0.8); color: #fff; border: none;
+  padding: 6px 16px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; font-family: system-ui, sans-serif;
+  backdrop-filter: blur(5px); transition: all 0.2s;
+}
+.edit-toggle:hover { background: rgba(44,62,80,1); }
+
+/* Edit-mode layout fix · DO NOT revert to `padding-top: 52px` here.
+   The original rule changed slide padding on every toggle, which triggers a
+   flex reflow: because `.slide` is display:flex column with `.slide-row { flex:1 }`
+   and `.slide-col { justify-content:center }`, a 40px padding change causes
+   center-justified children to absorb HALF the shrinkage. Different elements
+   shift by different amounts, so dragged elements (whose drag-transform is in
+   viewport px) drift relative to unmoved siblings on exit.
+   Fix: shift the active slide with a pure CSS transform (visual only, no
+   layout recalc). Every descendant moves by exactly 40px — no drift. */
+body.edit-mode .slide.active { transform: translateY(40px); }
+
+body.edit-mode .slide-title,
+body.edit-mode .slide-subtitle,
+body.edit-mode .info-card,
+body.edit-mode .section-main-title,
+body.edit-mode .section-number,
+body.edit-mode .highlight-box,
+body.edit-mode .cover-title,
+body.edit-mode .cover-chapter,
+body.edit-mode [style*="font-size"] {
+  outline: 1px dashed rgba(74,144,217,0.3);
+  outline-offset: 2px;
+  cursor: text;
+  min-height: 1em;
+}
+
+body.edit-mode .slide-title:hover,
+body.edit-mode .info-card:hover,
+body.edit-mode [contenteditable]:hover {
+  outline-color: #4a90d9;
+  background: rgba(74,144,217,0.03);
+}
+
+body.edit-mode [contenteditable]:focus {
+  outline: 2px solid #4a90d9;
+  background: rgba(74,144,217,0.05);
+}
+
+/* ========== SVG EDIT MODE ========== */
+body.edit-mode svg.svg-editable {
+  cursor: crosshair;
+  outline: 2px dashed rgba(74,144,217,0.4);
+  outline-offset: 4px;
+}
+body.edit-mode svg.svg-editable:hover {
+  outline-color: #4a90d9;
+}
+
+/* Selected SVG element highlight */
+.svg-selected-outline {
+  pointer-events: none;
+  fill: none;
+  stroke: #4a90d9;
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+  animation: svgSelDash 0.6s linear infinite;
+}
+@keyframes svgSelDash { to { stroke-dashoffset: -8; } }
+
+/* SVG element hover in edit mode */
+body.edit-mode svg.svg-editable *:not(.svg-selected-outline):not(.svg-drag-handle):hover {
+  filter: drop-shadow(0 0 3px rgba(74,144,217,0.6));
+  cursor: move;
+}
+
+/* Drag handle circles */
+.svg-drag-handle {
+  fill: #4a90d9;
+  stroke: #fff;
+  stroke-width: 2;
+  cursor: nwse-resize;
+  pointer-events: all;
+}
+.svg-drag-handle:hover {
+  fill: #e06b6b;
+}
+
+/* SVG properties panel */
+.svg-prop-panel {
+  position: fixed;
+  top: 48px;
+  right: 8px;
+  width: 240px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 2010;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  display: none;
+}
+.svg-prop-panel.active { display: block; }
+.svg-prop-panel .panel-header {
+  padding: 10px 14px;
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.svg-prop-panel .panel-header button {
+  background: none; border: none; color: #fff; font-size: 16px; cursor: pointer;
+}
+.svg-prop-section {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+}
+.svg-prop-section:last-child { border-bottom: none; }
+.svg-prop-section label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
+  color: #555;
+  font-size: 12px;
+}
+.svg-prop-section label input,
+.svg-prop-section label select {
+  width: 110px;
+  padding: 3px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.svg-prop-section label input[type="color"] {
+  width: 32px; height: 24px; padding: 0; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;
+}
+.svg-prop-section label input[type="range"] {
+  width: 90px;
+}
+.svg-prop-section .prop-btn {
+  display: inline-block;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin: 3px 4px 3px 0;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+.svg-prop-section .prop-btn:hover { background: #4a90d9; color: #fff; border-color: #4a90d9; }
+.svg-prop-section .prop-btn.danger:hover { background: #e06b6b; border-color: #e06b6b; }
+
+/* SVG Add toolbar (inside edit toolbar) */
+.svg-add-bar {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(255,255,255,0.3);
+}
+body.edit-mode.mode-pencil .svg-add-bar { display: flex; }
+.svg-add-bar button {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+.svg-add-bar button:hover { background: rgba(74,144,217,0.5); }
+.svg-add-bar button.adding { background: #4a90d9; border-color: #4a90d9; }
+
+/* Mode buttons */
+.mode-btn {
+  background: rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  font-size: 13px !important;
+  padding: 4px 12px !important;
+  transition: all 0.15s;
+}
+.mode-btn.active {
+  background: #4a90d9 !important;
+  border-color: #4a90d9 !important;
+}
+
+/* Hand mode cursor */
+body.edit-mode.mode-hand { cursor: grab; }
+body.edit-mode.mode-hand:active { cursor: grabbing; }
+body.edit-mode.mode-hand .slide * { cursor: grab; }
+body.edit-mode.mode-hand .slide *:active { cursor: grabbing; }
+
+/* Pencil mode cursor */
+body.edit-mode.mode-pencil { cursor: default; }
+body.edit-mode.mode-pencil svg.svg-editable { cursor: crosshair; }
+
+/* HTML element selection highlight */
+body.edit-mode .html-selected {
+  outline: 2px solid #4a90d9 !important;
+  outline-offset: 2px;
+}
+body.edit-mode .html-dragging {
+  opacity: 0.8;
+  z-index: 100;
+}
+
+/* SVG whole-selection */
+body.edit-mode .svg-whole-selected {
+  outline: 3px solid #4a90d9 !important;
+  outline-offset: 4px;
+  outline-style: dashed;
+}
+
+/* Undo toast */
+.editor-toast {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2c3e50;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: system-ui, sans-serif;
+  z-index: 3000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.editor-toast.show { opacity: 1; }
+
+/* Locked elements */
+.editor-locked {
+  pointer-events: none !important;
+  opacity: 0.7;
+}
+.editor-locked::after {
+  content: '🔒';
+  position: absolute;
+  top: 0; right: 0;
+  font-size: 10px;
+}
+
+/* Multi-select */
+.svg-multi-selected {
+  filter: drop-shadow(0 0 2px rgba(74,144,217,0.8));
+}
+
+/* Dynamic line (dashed animated) */
+.svg-dynamic-line {
+  stroke-dasharray: 8 4;
+  animation: dashFlow 1s linear infinite;
+}
+</style>
+
+<!-- ======================== EDIT MODE ======================== -->
+<button class="edit-toggle" onclick="toggleEditMode()">✏️ 编辑模式</button>
+<div class="edit-toolbar" id="editToolbar">
+  <!-- Mode switcher -->
+  <button class="mode-btn active" id="modeHand" onclick="setEditorMode('hand')" title="抓手模式 (H)">🖐 抓手</button>
+  <button class="mode-btn" id="modePencil" onclick="setEditorMode('pencil')" title="铅笔模式 (V)">✏️ 铅笔</button>
+  <span style="border-left:1px solid rgba(255,255,255,0.3);height:20px;margin:0 6px;"></span>
+  <!-- Text tools (pencil mode) -->
+  <button onclick="document.execCommand('bold')"><b>B</b></button>
+  <button onclick="changeColor()">🎨</button>
+  <button onclick="globalAddText()" title="添加文字">T+ 文字</button>
+  <span style="border-left:1px solid rgba(255,255,255,0.3);height:20px;margin:0 6px;"></span>
+  <!-- SVG draw tools (pencil mode) -->
+  <div class="svg-add-bar" id="svgAddBar">
+    <button onclick="svgAddMode('rect')" id="svgAddRect">▭</button>
+    <button onclick="svgAddMode('circle')" id="svgAddCircle">●</button>
+    <button onclick="svgAddMode('ellipse')" id="svgAddEllipse">⬮</button>
+    <button onclick="svgAddMode('line')" id="svgAddLine">╱</button>
+    <button onclick="svgAddMode('text')" id="svgAddText">T</button>
+    <button onclick="svgAddMode('path')" id="svgAddPath">✎</button>
+    <button onclick="svgAddMode('arrow')" id="svgAddArrow">→</button>
+    <button onclick="svgAddMode('dashLine')" id="svgAddDashLine" title="动态虚线">⤍</button>
+    <span style="border-left:1px solid rgba(255,255,255,0.2);height:16px;margin:0 4px;"></span>
+    <button onclick="editorGroupSelected()" title="组合 Ctrl+G">⊞</button>
+    <button onclick="editorUngroupSelected()" title="解组 Ctrl+Shift+G">⊟</button>
+  </div>
+  <span style="border-left:1px solid rgba(255,255,255,0.3);height:20px;margin:0 6px;"></span>
+  <!-- Slide actions -->
+  <button onclick="editorDeleteSlide()" title="删除当前页" style="background:rgba(224,107,107,0.25);border-color:#e06b6b;">🗑 删页</button>
+  <span style="flex:1;"></span>
+  <button onclick="editorUndo()" title="撤回 Ctrl+Z">↩ 撤回</button>
+  <button onclick="editorRedo()" title="重做 Ctrl+Y">↪ 重做</button>
+  <span style="border-left:1px solid rgba(255,255,255,0.3);height:20px;margin:0 6px;"></span>
+  <button class="save-btn" onclick="editorSave()">💾 保存</button>
+  <button onclick="downloadHTML()">📥 下载</button>
+  <button class="exit-btn" onclick="editorExit()">✕ 退出</button>
+</div>
+
+<!-- Properties Panel (shared for SVG & HTML elements) -->
+<div class="svg-prop-panel" id="svgPropPanel">
+  <div class="panel-header">
+    <span id="svgPropTitle">元素属性</span>
+    <button onclick="editorDeselect()" title="关闭">✕</button>
+  </div>
+  <div class="svg-prop-section" id="svgPropGeometry">
+    <b style="font-size:11px;color:#999;">位置 & 尺寸</b>
+    <label>X <input type="number" id="svgPropX" onchange="svgSetProp('x',this.value)"></label>
+    <label>Y <input type="number" id="svgPropY" onchange="svgSetProp('y',this.value)"></label>
+    <label>宽 <input type="number" id="svgPropW" onchange="svgSetProp('w',this.value)"></label>
+    <label>高 <input type="number" id="svgPropH" onchange="svgSetProp('h',this.value)"></label>
+  </div>
+  <div class="svg-prop-section" id="svgPropAppearance">
+    <b style="font-size:11px;color:#999;">外观</b>
+    <label>填充 <input type="color" id="svgPropFill" onchange="svgSetProp('fill',this.value)"><input type="text" id="svgPropFillText" style="width:70px;" onchange="svgSetProp('fill',this.value)" placeholder="#hex/none"></label>
+    <label>描边 <input type="color" id="svgPropStroke" onchange="svgSetProp('stroke',this.value)"><input type="text" id="svgPropStrokeText" style="width:70px;" onchange="svgSetProp('stroke',this.value)" placeholder="#hex/none"></label>
+    <label>描边宽 <input type="number" id="svgPropStrokeW" step="0.5" min="0" onchange="svgSetProp('stroke-width',this.value)"></label>
+    <label>透明度 <input type="range" id="svgPropOpacity" min="0" max="1" step="0.05" onchange="svgSetProp('opacity',this.value)"> <span id="svgPropOpacityVal">1</span></label>
+  </div>
+  <div class="svg-prop-section" id="svgPropTextSection" style="display:none;">
+    <b style="font-size:11px;color:#999;">文字</b>
+    <label>内容 <input type="text" id="svgPropTextContent" onchange="svgSetProp('textContent',this.value)"></label>
+    <label>字号 <input type="number" id="svgPropFontSize" onchange="svgSetProp('font-size',this.value)"></label>
+    <label>字重 <select id="svgPropFontWeight" onchange="svgSetProp('font-weight',this.value)">
+      <option value="normal">正常</option><option value="bold">粗体</option><option value="300">细体</option>
+    </select></label>
+  </div>
+  <div class="svg-prop-section" id="svgPropTransform">
+    <b style="font-size:11px;color:#999;">变换</b>
+    <label>旋转° <input type="number" id="svgPropRotate" onchange="svgSetProp('rotate',this.value)"></label>
+    <label>缩放 <input type="number" id="svgPropScale" step="0.1" min="0.1" value="1" onchange="svgSetProp('scale',this.value)"></label>
+  </div>
+  <div class="svg-prop-section" id="svgPropHtmlSection" style="display:none;">
+    <b style="font-size:11px;color:#999;">HTML 元素</b>
+    <label>字号 <input type="number" id="htmlPropFontSize" onchange="htmlSetProp('fontSize',this.value)"> px</label>
+    <label>颜色 <input type="color" id="htmlPropColor" onchange="htmlSetProp('color',this.value)"></label>
+  </div>
+  <div class="svg-prop-section">
+    <b style="font-size:11px;color:#999;">操作</b><br>
+    <span class="prop-btn" onclick="editorDuplicate()">📋 复制</span>
+    <span class="prop-btn" id="lockBtn" onclick="editorToggleLock()">🔓 固定</span>
+    <span class="prop-btn danger" onclick="editorDeleteSelected()">🗑 删除</span>
+  </div>
+</div>
+
+<script>
+// ========== EDIT MODE ==========
+var editMode = false;
+
+function toggleEditMode() {
+  editMode = !editMode;
+  document.body.classList.toggle('edit-mode', editMode);
+  document.getElementById('editToolbar').classList.toggle('active', editMode);
+  document.querySelector('.edit-toggle').style.display = editMode ? 'none' : '';
+  if (!editMode) {
+    // Remove contenteditable from all elements
+    document.querySelectorAll('[contenteditable]').forEach(function(el) {
+      el.removeAttribute('contenteditable');
+    });
+  }
+}
+
+function changeColor() {
+  var color = prompt('输入颜色代码（如 #e06b6b 红色, #4a90d9 蓝色, #5a9e6f 绿色）:', '#e06b6b');
+  if (color) document.execCommand('foreColor', false, color);
+}
+
+// ========== EDITOR V2: HAND/PENCIL MODE + UNDO + SAVE/DISCARD ==========
+(function() {
+  var NS = 'http://www.w3.org/2000/svg';
+
+  // ---- State ----
+  var selectedEl = null;       // currently selected element (SVG child or HTML el)
+  var selectedIsSvg = false;   // is selected el inside an SVG?
+  var selectedIsWholeSvg = false; // is the whole SVG selected?
+  var selectionRect = null;    // SVG selection rect overlay
+  var editorMode = 'hand';     // 'hand' or 'pencil'
+  var addingType = null;       // SVG shape being drawn
+  var isDragging = false;
+  var dragStart = { x: 0, y: 0 };
+  var drawStart = null;
+  var pathPoints = [];
+  var isDirty = false;
+
+  // ---- Undo/Redo (snapshot-based) ----
+  var undoStack = [];
+  var redoStack = [];
+  var MAX_UNDO = 50;
+  var editSnapshot = null; // HTML state when entering edit mode (for discard)
+
+  function getSlideContent() {
+    // Snapshot all slides as outerHTML so structural changes (add/delete) are undoable
+    var slides = document.querySelectorAll('.slide');
+    var data = [];
+    slides.forEach(function(s) {
+      var clone = s.cloneNode(true);
+      // Strip transient edit UI before snapshotting
+      clone.querySelectorAll('[contenteditable]').forEach(function(el) { el.removeAttribute('contenteditable'); });
+      clone.classList.remove('active');
+      data.push(clone.outerHTML);
+    });
+    return JSON.stringify(data);
+  }
+
+  function restoreSlideContent(json) {
+    var data = JSON.parse(json);
+    var existing = document.querySelectorAll('.slide');
+    if (existing.length === 0) return;
+    // Remember which slide the user was on so undo/redo does not yank them to page 0
+    var prevIdx = 0;
+    existing.forEach(function(s, i) { if (s.classList.contains('active')) prevIdx = i; });
+    var parent = existing[0].parentNode;
+    var anchor = existing[existing.length - 1].nextSibling;
+    existing.forEach(function(s) { s.remove(); });
+    var tmp = document.createElement('div');
+    data.forEach(function(html) {
+      tmp.innerHTML = html;
+      var el = tmp.firstElementChild;
+      if (!el) return;
+      if (anchor) parent.insertBefore(el, anchor);
+      else parent.appendChild(el);
+    });
+    rebuildNavDots();
+    var all = document.querySelectorAll('.slide');
+    // Clamp to the new slide count (undo may have added/removed slides)
+    var newIdx = Math.max(0, Math.min(prevIdx, all.length - 1));
+    all.forEach(function(s, i) { s.classList.toggle('active', i === newIdx); });
+    if (window.goTo) window.goTo(newIdx);
+    if (editMode) setContentEditable(true);
+  }
+
+  function rebuildNavDots() {
+    var navBar = document.querySelector('.nav-bar');
+    if (!navBar) return;
+    var pageSpan = navBar.querySelector('.nav-page');
+    navBar.querySelectorAll('.nav-dot').forEach(function(d) { d.remove(); });
+    var slides = document.querySelectorAll('.slide');
+    slides.forEach(function(s, i) {
+      var dot = document.createElement('button');
+      dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-target', i);
+      dot.addEventListener('click', function() { if (window.goTo) window.goTo(i); });
+      if (pageSpan) navBar.insertBefore(dot, pageSpan);
+      else navBar.appendChild(dot);
+    });
+    if (pageSpan) pageSpan.textContent = '1 / ' + slides.length;
+  }
+
+  // Override scripts.js goTo so it always re-queries — handles add/delete
+  window.goTo = function(index) {
+    var slides = document.querySelectorAll('.slide');
+    var dots = document.querySelectorAll('.nav-dot');
+    var pageLabel = document.querySelector('.nav-page');
+    var total = slides.length;
+    if (total === 0) return;
+    if (index < 0) index = 0;
+    if (index >= total) index = total - 1;
+    slides.forEach(function(s, i) { s.classList.toggle('active', i === index); });
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+    if (pageLabel) pageLabel.textContent = (index + 1) + ' / ' + total;
+    window.scrollTo(0, 0);
+    window._currentSlide = index;
+  };
+
+  window.editorDeleteSlide = function() {
+    if (!editMode) return;
+    var slides = document.querySelectorAll('.slide');
+    if (slides.length <= 1) { showToast('⚠️ 至少保留一页'); return; }
+    var idx = -1;
+    slides.forEach(function(s, i) { if (s.classList.contains('active')) idx = i; });
+    if (idx < 0) idx = 0;
+    if (!confirm('确定删除第 ' + (idx + 1) + ' / ' + slides.length + ' 页？\n（可以用 ↩ 撤回恢复）')) return;
+    pushUndo();
+    slides[idx].remove();
+    rebuildNavDots();
+    var remaining = document.querySelectorAll('.slide');
+    var newIdx = Math.min(idx, remaining.length - 1);
+    window.goTo(newIdx);
+    showToast('🗑 已删除，剩 ' + remaining.length + ' 页');
+  };
+
+  function pushUndo() {
+    // Clean up selection UI before snapshot
+    cleanupSelectionUI();
+    undoStack.push(getSlideContent());
+    if (undoStack.length > MAX_UNDO) undoStack.shift();
+    redoStack = [];
+    isDirty = true;
+  }
+
+  window.editorUndo = function() {
+    if (undoStack.length === 0) { showToast('没有可撤回的操作'); return; }
+    cleanupSelectionUI();
+    redoStack.push(getSlideContent());
+    var state = undoStack.pop();
+    restoreSlideContent(state);
+    reattachSvgListeners();
+    selectedEl = null;
+    showToast('↩ 已撤回');
+  };
+
+  window.editorRedo = function() {
+    if (redoStack.length === 0) { showToast('没有可重做的操作'); return; }
+    cleanupSelectionUI();
+    undoStack.push(getSlideContent());
+    var state = redoStack.pop();
+    restoreSlideContent(state);
+    reattachSvgListeners();
+    selectedEl = null;
+    showToast('↪ 已重做');
+  };
+
+  // ---- Toast ----
+  function showToast(msg) {
+    var t = document.getElementById('editorToast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'editorToast';
+      t.className = 'editor-toast';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function() { t.classList.remove('show'); }, 1500);
+  }
+
+  // ---- Cleanup selection UI artifacts ----
+  function cleanupSelectionUI() {
+    document.querySelectorAll('.svg-selected-outline, .svg-drag-handle, #_tmpDraw, #_tmpPath').forEach(function(el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+    document.querySelectorAll('.html-selected, .svg-whole-selected').forEach(function(el) {
+      el.classList.remove('html-selected', 'svg-whole-selected');
+    });
+    selectionRect = null;
+  }
+
+  // ---- Mode switching ----
+  window.setEditorMode = function(mode) {
+    editorMode = mode;
+    document.getElementById('modeHand').classList.toggle('active', mode === 'hand');
+    document.getElementById('modePencil').classList.toggle('active', mode === 'pencil');
+    document.body.classList.toggle('mode-hand', mode === 'hand');
+    document.body.classList.toggle('mode-pencil', mode === 'pencil');
+    // Show/hide SVG draw tools
+    document.getElementById('svgAddBar').style.display = mode === 'pencil' ? 'flex' : 'none';
+    if (mode === 'hand') cancelAddMode();
+    // In hand mode, disable contenteditable; in pencil mode, enable
+    toggleContentEditable(mode === 'pencil');
+  };
+
+  function toggleContentEditable(enable) {
+    var sel = '.slide-title, .slide-subtitle, .info-card, .section-main-title, .section-number, .highlight-box, .cover-title, .cover-chapter';
+    document.querySelectorAll(sel).forEach(function(el) {
+      if (enable) el.setAttribute('contenteditable', 'true');
+      else el.removeAttribute('contenteditable');
+    });
+    document.querySelectorAll('.slide div[style], .slide span[style], .slide b, .slide p').forEach(function(el) {
+      if (el.closest('svg') || el.closest('.nav-bar') || el.closest('.edit-toolbar') || el.closest('.svg-prop-panel')) return;
+      if (enable) el.setAttribute('contenteditable', 'true');
+      else el.removeAttribute('contenteditable');
+    });
+  }
+
+  // ---- Editor lifecycle (save/discard/exit) ----
+  var origToggle = window.toggleEditMode;
+  window.toggleEditMode = function() {
+    origToggle();
+    if (editMode) {
+      // Entering edit mode
+      editSnapshot = getSlideContent();
+      undoStack = [];
+      redoStack = [];
+      isDirty = false;
+      setEditorMode('hand'); // default to hand
+      attachAllListeners();
+    } else {
+      // Exiting via the original function (shouldn't happen, use editorExit)
+      cleanupSelectionUI();
+      detachAllListeners();
+    }
+  };
+
+  // Persistence: write a snapshot of the current slide DOM to localStorage
+  // so the user actually sees their edits after a page refresh. The original
+  // implementation only updated the in-memory baseline, so edits vanished
+  // on reload — confusing because the button is labeled "💾 保存".
+  var PERSIST_KEY = 'book2ppt:' + (location.pathname || 'default');
+  window.editorSave = function() {
+    cleanupSelectionUI();
+    editSnapshot = getSlideContent(); // update in-memory baseline
+    undoStack = [];
+    redoStack = [];
+    isDirty = false;
+    try {
+      localStorage.setItem(PERSIST_KEY, editSnapshot);
+      showToast('💾 已保存 · 刷新仍在');
+    } catch(e) {
+      showToast('⚠️ 保存到浏览器失败：' + (e.message || e));
+    }
+  };
+  // Expose a reset action for users who want to throw away the local copy
+  window.editorResetSaved = function() {
+    if (!confirm('清除本页的本地保存版本？\n刷新后将恢复原始课件内容。')) return;
+    try { localStorage.removeItem(PERSIST_KEY); alert('已清除。刷新页面查看原始内容。'); }
+    catch(e) { alert('清除失败：' + (e.message || e)); }
+  };
+  // Load saved snapshot at startup (DOM is already parsed since this script
+  // sits right before the closing body tag).
+  (function autoRestoreSaved() {
+    var raw;
+    try { raw = localStorage.getItem(PERSIST_KEY); } catch(e) { return; }
+    if (!raw) return;
+    try { restoreSlideContent(raw); } catch(e) { return; }
+    // Small green chip so the user knows they are viewing a saved copy
+    var hint = document.createElement('div');
+    hint.textContent = '📝 已载入本地保存版本';
+    hint.style.cssText = 'position:fixed;top:8px;left:12px;background:rgba(90,158,111,0.9);color:#fff;padding:4px 10px;border-radius:10px;font-size:13px;font-family:system-ui,sans-serif;z-index:2500;pointer-events:none;opacity:0.9;transition:opacity 0.5s;';
+    document.body.appendChild(hint);
+    setTimeout(function() { hint.style.opacity = '0'; }, 2500);
+    setTimeout(function() { hint.remove(); }, 3200);
+  })();
+
+  window.editorExit = function() {
+    if (isDirty) {
+      if (!confirm('有未保存的修改，确定退出编辑？\n退出将丢弃所有未保存的改动。')) return;
+      // Restore to last saved state
+      cleanupSelectionUI();
+      if (editSnapshot) restoreSlideContent(editSnapshot);
+    }
+    cleanupSelectionUI();
+    detachAllListeners();
+    // Call original toggle to exit
+    editMode = true; // force toggle off
+    origToggle();
+    document.body.classList.remove('mode-hand', 'mode-pencil');
+  };
+
+  window.downloadHTML = function() {
+    cleanupSelectionUI();
+    // Remove contenteditable before saving
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[contenteditable]').forEach(function(el) {
+      el.removeAttribute('contenteditable');
+    });
+    clone.querySelectorAll('.svg-selected-outline, .svg-drag-handle, #_tmpDraw, #_tmpPath, .html-selected, .svg-whole-selected, #editorToast').forEach(function(el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+    clone.querySelector('body').classList.remove('edit-mode', 'mode-hand', 'mode-pencil');
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '地球上的大气_课件_已编辑.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('📥 已下载');
+  };
+
+  // ---- Attach/detach listeners ----
+  function attachAllListeners() {
+    document.querySelectorAll('.slide svg').forEach(function(svg) {
+      svg.classList.add('svg-editable');
+      svg.addEventListener('mousedown', onSvgMouseDown);
+      svg.addEventListener('mousemove', onSvgMouseMove);
+      svg.addEventListener('mouseup', onSvgMouseUp);
+      svg.addEventListener('dblclick', onSvgDblClick);
+    });
+    // HTML element listeners for hand mode
+    document.addEventListener('mousedown', onHtmlMouseDown);
+    document.addEventListener('mousemove', onHtmlMouseMove);
+    document.addEventListener('mouseup', onHtmlMouseUp);
+    document.addEventListener('dblclick', onHtmlDblClick);
+  }
+
+  function detachAllListeners() {
+    document.querySelectorAll('.slide svg').forEach(function(svg) {
+      svg.classList.remove('svg-editable');
+      svg.removeEventListener('mousedown', onSvgMouseDown);
+      svg.removeEventListener('mousemove', onSvgMouseMove);
+      svg.removeEventListener('mouseup', onSvgMouseUp);
+      svg.removeEventListener('dblclick', onSvgDblClick);
+    });
+    document.removeEventListener('mousedown', onHtmlMouseDown);
+    document.removeEventListener('mousemove', onHtmlMouseMove);
+    document.removeEventListener('mouseup', onHtmlMouseUp);
+    document.removeEventListener('dblclick', onHtmlDblClick);
+  }
+
+  function reattachSvgListeners() {
+    document.querySelectorAll('.slide svg').forEach(function(svg) {
+      svg.classList.add('svg-editable');
+      svg.removeEventListener('mousedown', onSvgMouseDown);
+      svg.removeEventListener('mousemove', onSvgMouseMove);
+      svg.removeEventListener('mouseup', onSvgMouseUp);
+      svg.removeEventListener('dblclick', onSvgDblClick);
+      svg.addEventListener('mousedown', onSvgMouseDown);
+      svg.addEventListener('mousemove', onSvgMouseMove);
+      svg.addEventListener('mouseup', onSvgMouseUp);
+      svg.addEventListener('dblclick', onSvgDblClick);
+    });
+  }
+
+  // ---- SVG coordinate helpers ----
+  function svgPoint(svg, clientX, clientY) {
+    var pt = svg.createSVGPoint();
+    pt.x = clientX; pt.y = clientY;
+    var ctm = svg.getScreenCTM();
+    if (ctm) return pt.matrixTransform(ctm.inverse());
+    return pt;
+  }
+
+  function getElBBox(el) {
+    try { return el.getBBox(); } catch(e) { return { x: 0, y: 0, width: 0, height: 0 }; }
+  }
+
+  // Get bounding box in SVG root coordinates (accounts for transforms)
+  function getTransformedBBox(el) {
+    var svg = el.closest('svg');
+    if (!svg) return getElBBox(el);
+    try {
+      // Use getBoundingClientRect relative to SVG
+      var elRect = el.getBoundingClientRect();
+      var svgRect = svg.getBoundingClientRect();
+      var ctm = svg.getScreenCTM();
+      if (!ctm) return getElBBox(el);
+      var inv = ctm.inverse();
+      // Convert screen corners to SVG coords
+      var p1 = svg.createSVGPoint(); p1.x = elRect.left; p1.y = elRect.top;
+      var p2 = svg.createSVGPoint(); p2.x = elRect.right; p2.y = elRect.bottom;
+      var sp1 = p1.matrixTransform(inv);
+      var sp2 = p2.matrixTransform(inv);
+      return { x: sp1.x, y: sp1.y, width: sp2.x - sp1.x, height: sp2.y - sp1.y };
+    } catch(e) { return getElBBox(el); }
+  }
+
+  // ---- Unified selection ----
+  function selectSvgElement(el) {
+    if (!el || el === selectionRect) return;
+    if (el.tagName === 'svg') return;
+    if (el.classList && el.classList.contains('editor-locked')) return;
+    var svg = el.closest('svg');
+    if (!svg) return;
+
+    editorDeselect();
+    selectedEl = el;
+    selectedIsSvg = true;
+    selectedIsWholeSvg = false;
+
+    var bbox = getTransformedBBox(el);
+    selectionRect = document.createElementNS(NS, 'rect');
+    selectionRect.setAttribute('class', 'svg-selected-outline');
+    selectionRect.setAttribute('x', bbox.x - 3);
+    selectionRect.setAttribute('y', bbox.y - 3);
+    selectionRect.setAttribute('width', bbox.width + 6);
+    selectionRect.setAttribute('height', bbox.height + 6);
+    selectionRect.setAttribute('rx', '2');
+    svg.appendChild(selectionRect);
+
+    // Update lock button
+    var lockBtn = document.getElementById('lockBtn');
+    if (lockBtn) lockBtn.textContent = el.classList.contains('editor-locked') ? '🔓 解锁' : '🔒 固定';
+
+    updatePropPanel(true);
+  }
+
+  function selectWholeSvg(svg) {
+    editorDeselect();
+    selectedEl = svg;
+    selectedIsSvg = false;
+    selectedIsWholeSvg = true;
+    svg.classList.add('svg-whole-selected');
+    updatePropPanel(false);
+  }
+
+  function selectHtmlElement(el) {
+    editorDeselect();
+    selectedEl = el;
+    selectedIsSvg = false;
+    selectedIsWholeSvg = false;
+    el.classList.add('html-selected');
+    updatePropPanel(false);
+  }
+
+  window.editorDeselect = function() {
+    cleanupSelectionUI();
+    selectedEl = null;
+    selectedIsSvg = false;
+    selectedIsWholeSvg = false;
+    document.getElementById('svgPropPanel').classList.remove('active');
+  };
+
+  function refreshSelection() {
+    if (!selectedEl || !selectionRect || !selectedIsSvg) return;
+    var bbox = getTransformedBBox(selectedEl);
+    selectionRect.setAttribute('x', bbox.x - 3);
+    selectionRect.setAttribute('y', bbox.y - 3);
+    selectionRect.setAttribute('width', bbox.width + 6);
+    selectionRect.setAttribute('height', bbox.height + 6);
+  }
+
+  // ---- Properties panel ----
+  function updatePropPanel(isSvgChild) {
+    if (!selectedEl) return;
+    var panel = document.getElementById('svgPropPanel');
+    panel.classList.add('active');
+
+    var tag = selectedEl.tagName.toLowerCase();
+    document.getElementById('svgPropTitle').textContent = (selectedIsWholeSvg ? 'SVG 整体' : '<' + tag + '>') + ' 属性';
+
+    // Show/hide sections based on type
+    var isSvgEl = isSvgChild && !selectedIsWholeSvg;
+    document.getElementById('svgPropGeometry').style.display = '';
+    document.getElementById('svgPropAppearance').style.display = isSvgEl ? '' : 'none';
+    document.getElementById('svgPropTransform').style.display = isSvgEl ? '' : 'none';
+    document.getElementById('svgPropHtmlSection').style.display = (!isSvgEl && !selectedIsWholeSvg) ? '' : 'none';
+
+    if (isSvgEl) {
+      var bbox = getTransformedBBox(selectedEl);
+      document.getElementById('svgPropX').value = Math.round(bbox.x);
+      document.getElementById('svgPropY').value = Math.round(bbox.y);
+      document.getElementById('svgPropW').value = Math.round(bbox.width);
+      document.getElementById('svgPropH').value = Math.round(bbox.height);
+
+      var fill = selectedEl.getAttribute('fill') || '';
+      var stroke = selectedEl.getAttribute('stroke') || '';
+      var fillHex = colorToHex(fill);
+      var strokeHex = colorToHex(stroke);
+      document.getElementById('svgPropFillText').value = fillHex || fill;
+      document.getElementById('svgPropStrokeText').value = strokeHex || stroke;
+      try { document.getElementById('svgPropFill').value = fillHex || '#000000'; } catch(e) {}
+      try { document.getElementById('svgPropStroke').value = strokeHex || '#000000'; } catch(e) {}
+      document.getElementById('svgPropStrokeW').value = selectedEl.getAttribute('stroke-width') || '';
+      var op = selectedEl.getAttribute('opacity');
+      document.getElementById('svgPropOpacity').value = op !== null ? op : 1;
+      document.getElementById('svgPropOpacityVal').textContent = op !== null ? op : '1';
+
+      var isText = (tag === 'text' || tag === 'tspan');
+      document.getElementById('svgPropTextSection').style.display = isText ? '' : 'none';
+      if (isText) {
+        document.getElementById('svgPropTextContent').value = selectedEl.textContent;
+        document.getElementById('svgPropFontSize').value = selectedEl.getAttribute('font-size') || parseFloat(getComputedStyle(selectedEl).fontSize) || '';
+        document.getElementById('svgPropFontWeight').value = selectedEl.getAttribute('font-weight') || 'normal';
+      }
+
+      var t = selectedEl.getAttribute('transform') || '';
+      var rotMatch = t.match(/rotate\(([-\d.]+)/);
+      var scaleMatch = t.match(/scale\(([-\d.]+)/);
+      document.getElementById('svgPropRotate').value = rotMatch ? rotMatch[1] : 0;
+      document.getElementById('svgPropScale').value = scaleMatch ? scaleMatch[1] : 1;
+    } else if (selectedIsWholeSvg) {
+      var r = selectedEl.getBoundingClientRect();
+      document.getElementById('svgPropX').value = Math.round(r.left);
+      document.getElementById('svgPropY').value = Math.round(r.top);
+      document.getElementById('svgPropW').value = selectedEl.getAttribute('width') || Math.round(r.width);
+      document.getElementById('svgPropH').value = selectedEl.getAttribute('height') || Math.round(r.height);
+      document.getElementById('svgPropTextSection').style.display = 'none';
+    } else {
+      // HTML element
+      var r = selectedEl.getBoundingClientRect();
+      document.getElementById('svgPropX').value = Math.round(r.left);
+      document.getElementById('svgPropY').value = Math.round(r.top);
+      document.getElementById('svgPropW').value = Math.round(r.width);
+      document.getElementById('svgPropH').value = Math.round(r.height);
+      document.getElementById('svgPropTextSection').style.display = 'none';
+      var cs = getComputedStyle(selectedEl);
+      document.getElementById('htmlPropFontSize').value = parseInt(cs.fontSize) || '';
+      try { document.getElementById('htmlPropColor').value = rgbToHex(cs.color); } catch(e) {}
+    }
+  }
+
+  function rgbToHex(rgb) {
+    var m = rgb.match(/(\d+)/g);
+    if (!m || m.length < 3) return '#000000';
+    return '#' + m.slice(0,3).map(function(v) { return ('0' + parseInt(v).toString(16)).slice(-2); }).join('');
+  }
+
+  // Convert any CSS color (rgb, rgba, named, hex) to hex string
+  function colorToHex(color) {
+    if (!color || color === 'none' || color === 'transparent') return color;
+    if (color.charAt(0) === '#') return color;
+    if (color.match(/^rgb/i)) return rgbToHex(color);
+    // Named color → use canvas to resolve
+    try {
+      var ctx = document.createElement('canvas').getContext('2d');
+      ctx.fillStyle = color;
+      return ctx.fillStyle; // returns hex
+    } catch(e) { return color; }
+  }
+
+  // ---- Set properties ----
+  window.svgSetProp = function(prop, val) {
+    if (!selectedEl) return;
+    pushUndo();
+
+    if (selectedIsWholeSvg) {
+      if (prop === 'w') selectedEl.setAttribute('width', val);
+      else if (prop === 'h') selectedEl.setAttribute('height', val);
+      return;
+    }
+
+    if (!selectedIsSvg) {
+      // HTML element props handled by htmlSetProp
+      return;
+    }
+
+    var bbox = getTransformedBBox(selectedEl);
+    if (prop === 'textContent') {
+      selectedEl.textContent = val;
+    } else if (prop === 'opacity') {
+      selectedEl.setAttribute('opacity', val);
+      document.getElementById('svgPropOpacityVal').textContent = val;
+    } else if (prop === 'rotate' || prop === 'scale') {
+      applyTransform(prop, val);
+    } else if (prop === 'x') {
+      moveSvgElement(selectedEl, parseFloat(val) - bbox.x, 0);
+    } else if (prop === 'y') {
+      moveSvgElement(selectedEl, 0, parseFloat(val) - bbox.y);
+    } else if (prop === 'w' || prop === 'h') {
+      resizeElement(selectedEl, prop, parseFloat(val));
+    } else if (prop === 'fill' || prop === 'stroke') {
+      selectedEl.setAttribute(prop, (val === 'none' || val === '') ? 'none' : val);
+      if (prop === 'fill') {
+        document.getElementById('svgPropFillText').value = val;
+        try { document.getElementById('svgPropFill').value = val; } catch(e) {}
+      } else {
+        document.getElementById('svgPropStrokeText').value = val;
+        try { document.getElementById('svgPropStroke').value = val; } catch(e) {}
+      }
+    } else {
+      selectedEl.setAttribute(prop, val);
+    }
+    refreshSelection();
+  };
+
+  window.htmlSetProp = function(prop, val) {
+    if (!selectedEl || selectedIsSvg) return;
+    pushUndo();
+    if (prop === 'fontSize') selectedEl.style.fontSize = val + 'px';
+    else if (prop === 'color') selectedEl.style.color = val;
+  };
+
+  function applyTransform(type, val) {
+    // Store original transform on first edit
+    if (!selectedEl.dataset.origTransform && selectedEl.dataset.origTransform !== '') {
+      selectedEl.dataset.origTransform = selectedEl.getAttribute('transform') || '';
+    }
+    var origT = selectedEl.dataset.origTransform || '';
+    var bbox = getElBBox(selectedEl); // local bbox (before transform)
+    var cx = bbox.x + bbox.width / 2;
+    var cy = bbox.y + bbox.height / 2;
+
+    // Get current rotate and scale values
+    var curFull = selectedEl.getAttribute('transform') || '';
+    var rotMatch = curFull.match(/rotate\(([-\d.]+)/);
+    var scaleMatch = curFull.match(/data-scale="([-\d.]+)"/); // not used, get from input
+    var curRot = rotMatch ? parseFloat(rotMatch[1]) : 0;
+    var curScale = 1;
+    var scaleInput = document.getElementById('svgPropScale');
+    if (scaleInput) curScale = parseFloat(scaleInput.value) || 1;
+    var rotInput = document.getElementById('svgPropRotate');
+    if (rotInput) curRot = parseFloat(rotInput.value) || 0;
+
+    if (type === 'rotate') curRot = parseFloat(val);
+    if (type === 'scale') curScale = parseFloat(val);
+
+    // Build transform: scale around center, then rotate around center, on top of original
+    var t = origT;
+    if (curScale !== 1) {
+      t = 'translate(' + cx + ',' + cy + ') scale(' + curScale + ') translate(' + (-cx) + ',' + (-cy) + ')' + (t ? ' ' + t : '');
+    }
+    if (curRot !== 0) {
+      t = 'rotate(' + curRot + ',' + cx + ',' + cy + ')' + (t ? ' ' + t : '');
+    }
+    selectedEl.setAttribute('transform', t.trim() || '');
+    refreshSelection();
+  }
+
+  // ---- Move SVG element ----
+  function moveSvgElement(el, dx, dy) {
+    var tag = el.tagName.toLowerCase();
+    if (tag === 'rect' || tag === 'image' || tag === 'foreignobject') {
+      el.setAttribute('x', parseFloat(el.getAttribute('x') || 0) + dx);
+      el.setAttribute('y', parseFloat(el.getAttribute('y') || 0) + dy);
+    } else if (tag === 'circle') {
+      el.setAttribute('cx', parseFloat(el.getAttribute('cx') || 0) + dx);
+      el.setAttribute('cy', parseFloat(el.getAttribute('cy') || 0) + dy);
+    } else if (tag === 'ellipse') {
+      el.setAttribute('cx', parseFloat(el.getAttribute('cx') || 0) + dx);
+      el.setAttribute('cy', parseFloat(el.getAttribute('cy') || 0) + dy);
+    } else if (tag === 'line') {
+      el.setAttribute('x1', parseFloat(el.getAttribute('x1') || 0) + dx);
+      el.setAttribute('y1', parseFloat(el.getAttribute('y1') || 0) + dy);
+      el.setAttribute('x2', parseFloat(el.getAttribute('x2') || 0) + dx);
+      el.setAttribute('y2', parseFloat(el.getAttribute('y2') || 0) + dy);
+    } else if (tag === 'text' || tag === 'tspan') {
+      el.setAttribute('x', parseFloat(el.getAttribute('x') || 0) + dx);
+      el.setAttribute('y', parseFloat(el.getAttribute('y') || 0) + dy);
+    } else if (tag === 'path') {
+      var t = el.getAttribute('transform') || '';
+      var m = t.match(/translate\(([-\d.]+)[, ]+([-\d.]+)\)/);
+      var ox = m ? parseFloat(m[1]) : 0; var oy = m ? parseFloat(m[2]) : 0;
+      t = t.replace(/translate\([-\d.]+[, ]+[-\d.]+\)\s*/g, '');
+      t = 'translate(' + (ox + dx) + ',' + (oy + dy) + ') ' + t;
+      el.setAttribute('transform', t.trim());
+    } else {
+      var t = el.getAttribute('transform') || '';
+      var m = t.match(/translate\(([-\d.]+)[, ]*([-\d.]*)\)/);
+      var ox = m ? parseFloat(m[1]) : 0; var oy = m ? parseFloat(m[2] || 0) : 0;
+      t = t.replace(/translate\([^)]*\)\s*/g, '');
+      t = 'translate(' + (ox + dx) + ',' + (oy + dy) + ') ' + t;
+      el.setAttribute('transform', t.trim());
+    }
+  }
+
+  function resizeElement(el, dim, val) {
+    var tag = el.tagName.toLowerCase();
+    if (tag === 'rect' || tag === 'image' || tag === 'foreignobject') {
+      el.setAttribute(dim === 'w' ? 'width' : 'height', val);
+    } else if (tag === 'circle') {
+      el.setAttribute('r', val / 2);
+    } else if (tag === 'ellipse') {
+      el.setAttribute(dim === 'w' ? 'rx' : 'ry', val / 2);
+    }
+  }
+
+  // ---- Move HTML element (via CSS transform) ----
+  // IMPORTANT: the regex only matches `translate(Npx, Npx)`. If the element's
+  // existing transform uses any other unit (e.g. `translate(-50%, -50%)` for
+  // centering), parsing fails silently and the centering gets overwritten,
+  // causing the element to jump by half its own size. To stay robust, if the
+  // current transform contains a non-px translate we first convert the element
+  // to absolute px positioning (left/top) and clear the transform before
+  // applying the drag delta.
+  function moveHtmlElement(el, dx, dy) {
+    var cur = el.style.transform || '';
+    if (cur && /translate\([^)]*%[^)]*\)/.test(cur)) {
+      // Non-px translate present - snapshot visual position and normalize
+      var slide = el.closest('.slide');
+      if (slide) {
+        var sr = slide.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        el.style.position = 'absolute';
+        el.style.left = Math.round(er.left - sr.left) + 'px';
+        el.style.top  = Math.round(er.top  - sr.top)  + 'px';
+        el.style.transform = '';
+        cur = '';
+      }
+    }
+    var m = cur.match(/translate\(([-\d.]+)px[, ]+([-\d.]+)px\)/);
+    var ox = m ? parseFloat(m[1]) : 0;
+    var oy = m ? parseFloat(m[2]) : 0;
+    el.style.transform = 'translate(' + (ox + dx) + 'px,' + (oy + dy) + 'px)';
+  }
+
+  // ---- SVG mouse events ----
+  var dragUndoPushed = false;
+
+  function onSvgMouseDown(e) {
+    if (!editMode) return;
+    var svg = e.currentTarget;
+    var pt = svgPoint(svg, e.clientX, e.clientY);
+
+    // Pencil mode: adding new element
+    if (editorMode === 'pencil' && addingType) {
+      e.preventDefault(); e.stopPropagation();
+      drawStart = { x: pt.x, y: pt.y, svg: svg };
+      pushUndo();
+
+      if (addingType === 'text') {
+        var txt = prompt('输入文字:', '文字');
+        if (txt) {
+          var el = document.createElementNS(NS, 'text');
+          el.setAttribute('x', pt.x); el.setAttribute('y', pt.y);
+          el.setAttribute('font-size', '16'); el.setAttribute('fill', '#2c3e50');
+          el.textContent = txt;
+          svg.appendChild(el);
+          cancelAddMode();
+          selectSvgElement(el);
+        }
+        return;
+      }
+      if (addingType === 'path') {
+        pathPoints.push({ x: pt.x, y: pt.y });
+        if (pathPoints.length === 1) {
+          var el = document.createElementNS(NS, 'path');
+          el.setAttribute('fill', 'none'); el.setAttribute('stroke', '#2c3e50');
+          el.setAttribute('stroke-width', '2');
+          el.setAttribute('d', 'M' + pt.x + ' ' + pt.y);
+          el.id = '_tmpPath';
+          svg.appendChild(el);
+        } else {
+          var p = svg.querySelector('#_tmpPath');
+          if (p) p.setAttribute('d', p.getAttribute('d') + ' L' + pt.x + ' ' + pt.y);
+        }
+        return;
+      }
+      return;
+    }
+
+    var target = e.target;
+
+    // Hand mode: click SVG background → select whole SVG
+    if (editorMode === 'hand' && target === svg) {
+      selectWholeSvg(svg);
+      isDragging = true;
+      dragStart = { x: e.clientX, y: e.clientY };
+      dragUndoPushed = false;
+      e.preventDefault();
+      return;
+    }
+
+    // Click SVG background in pencil mode → deselect
+    if (target === svg) { editorDeselect(); return; }
+    if (target.classList.contains('svg-selected-outline') || target.classList.contains('svg-drag-handle')) return;
+
+    // Find meaningful parent
+    var meaningful = target;
+    var parent = target.parentElement;
+    while (parent && parent !== svg) {
+      if (parent.tagName.toLowerCase() === 'g' && parent.parentElement === svg) { meaningful = parent; break; }
+      if (parent.parentElement === svg) { meaningful = parent; break; }
+      parent = parent.parentElement;
+    }
+
+    // Shift+click for multi-select
+    if (e.shiftKey) {
+      addToMultiSelect(meaningful);
+      e.preventDefault();
+      return;
+    }
+
+    if (multiSelected.length > 0) clearMultiSelect();
+    selectSvgElement(meaningful);
+    isDragging = true;
+    dragStart = { x: pt.x, y: pt.y };
+    dragUndoPushed = false;
+    e.preventDefault();
+  }
+
+  function onSvgMouseMove(e) {
+    if (!editMode) return;
+    var svg = e.currentTarget;
+
+    // Drawing preview
+    if (editorMode === 'pencil' && addingType && drawStart && addingType !== 'text' && addingType !== 'path') {
+      var pt = svgPoint(svg, e.clientX, e.clientY);
+      var dx = pt.x - drawStart.x; var dy = pt.y - drawStart.y;
+      var tmp = svg.querySelector('#_tmpDraw');
+      if (!tmp) {
+        if (addingType === 'line' || addingType === 'arrow' || addingType === 'dashLine') tmp = document.createElementNS(NS, 'line');
+        else if (addingType === 'circle') tmp = document.createElementNS(NS, 'circle');
+        else if (addingType === 'ellipse') tmp = document.createElementNS(NS, 'ellipse');
+        else tmp = document.createElementNS(NS, 'rect');
+        tmp.id = '_tmpDraw';
+        tmp.setAttribute('fill', (addingType === 'line' || addingType === 'arrow' || addingType === 'dashLine') ? 'none' : 'rgba(74,144,217,0.2)');
+        tmp.setAttribute('stroke', '#4a90d9'); tmp.setAttribute('stroke-width', '2');
+        tmp.setAttribute('stroke-dasharray', '4 2');
+        svg.appendChild(tmp);
+      }
+      if (addingType === 'line' || addingType === 'arrow' || addingType === 'dashLine') {
+        tmp.setAttribute('x1', drawStart.x); tmp.setAttribute('y1', drawStart.y);
+        tmp.setAttribute('x2', pt.x); tmp.setAttribute('y2', pt.y);
+      } else if (addingType === 'circle') {
+        tmp.setAttribute('cx', drawStart.x); tmp.setAttribute('cy', drawStart.y);
+        tmp.setAttribute('r', Math.sqrt(dx*dx + dy*dy));
+      } else if (addingType === 'ellipse') {
+        tmp.setAttribute('cx', drawStart.x + dx/2); tmp.setAttribute('cy', drawStart.y + dy/2);
+        tmp.setAttribute('rx', Math.abs(dx/2)); tmp.setAttribute('ry', Math.abs(dy/2));
+      } else {
+        tmp.setAttribute('x', Math.min(drawStart.x, pt.x)); tmp.setAttribute('y', Math.min(drawStart.y, pt.y));
+        tmp.setAttribute('width', Math.abs(dx)); tmp.setAttribute('height', Math.abs(dy));
+      }
+      return;
+    }
+
+    // Drag: whole SVG
+    if (isDragging && selectedEl && selectedIsWholeSvg) {
+      if (!dragUndoPushed) { pushUndo(); dragUndoPushed = true; }
+      var ddx = e.clientX - dragStart.x;
+      var ddy = e.clientY - dragStart.y;
+      moveHtmlElement(selectedEl, ddx, ddy);
+      dragStart = { x: e.clientX, y: e.clientY };
+      return;
+    }
+
+    // Drag: SVG child element
+    if (isDragging && selectedEl && selectedIsSvg) {
+      var pt = svgPoint(svg, e.clientX, e.clientY);
+      if (!dragUndoPushed) { pushUndo(); dragUndoPushed = true; }
+      moveSvgElement(selectedEl, pt.x - dragStart.x, pt.y - dragStart.y);
+      dragStart = { x: pt.x, y: pt.y };
+      refreshSelection();
+      updatePropPanel(true);
+    }
+  }
+
+  function onSvgMouseUp(e) {
+    if (!editMode) return;
+    var svg = e.currentTarget;
+
+    // Finish drawing
+    if (editorMode === 'pencil' && addingType && drawStart && addingType !== 'text' && addingType !== 'path') {
+      var pt = svgPoint(svg, e.clientX, e.clientY);
+      var tmp = svg.querySelector('#_tmpDraw');
+      if (tmp) {
+        var dx = pt.x - drawStart.x; var dy = pt.y - drawStart.y;
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+          tmp.removeAttribute('id');
+          tmp.setAttribute('stroke-dasharray', '');
+          if (addingType === 'rect') { tmp.setAttribute('fill', 'rgba(74,144,217,0.15)'); tmp.setAttribute('rx', '3'); }
+          else if (addingType === 'circle' || addingType === 'ellipse') { tmp.setAttribute('fill', 'rgba(74,144,217,0.15)'); }
+          else if (addingType === 'arrow') { ensureArrowMarker(svg); tmp.setAttribute('marker-end', 'url(#svg-editor-arrow)'); tmp.setAttribute('stroke', '#2c3e50'); }
+          else if (addingType === 'dashLine') { tmp.setAttribute('stroke', '#2c3e50'); tmp.setAttribute('stroke-dasharray', '8 4'); tmp.classList.add('svg-dynamic-line'); }
+          else if (addingType === 'line') { tmp.setAttribute('stroke', '#2c3e50'); }
+          selectSvgElement(tmp);
+        } else {
+          if (tmp.parentNode) tmp.parentNode.removeChild(tmp);
+        }
+      }
+      drawStart = null;
+      cancelAddMode();
+      return;
+    }
+    isDragging = false;
+  }
+
+  function onSvgDblClick(e) {
+    if (!editMode || editorMode !== 'pencil') return;
+    var target = e.target;
+    if (target.tagName.toLowerCase() === 'text' || target.tagName.toLowerCase() === 'tspan') {
+      var newText = prompt('编辑文字:', target.textContent);
+      if (newText !== null) {
+        pushUndo();
+        target.textContent = newText;
+        if (selectedEl === target) updatePropPanel(true);
+      }
+    }
+  }
+
+  // ---- HTML element mouse events (for hand mode) ----
+  var htmlDragEl = null;
+  var htmlDragStart = { x: 0, y: 0 };
+  var htmlDragUndoPushed = false;
+
+  function isEditableTarget(el) {
+    if (!el) return false;
+    if (el.closest('.edit-toolbar') || el.closest('.svg-prop-panel') || el.closest('.nav-bar') || el.closest('.edit-toggle')) return false;
+    if (el.closest('svg')) return false;
+    var slide = el.closest('.slide');
+    return !!slide;
+  }
+
+  function onHtmlMouseDown(e) {
+    if (!editMode || editorMode !== 'hand') return;
+    var target = e.target;
+    if (!isEditableTarget(target)) return;
+    // Don't interfere with SVG events
+    if (target.closest('svg')) return;
+    // Find meaningful element (not raw text nodes)
+    var el = target;
+    if (el.tagName === 'BODY' || el.classList.contains('slide')) return;
+
+    // Select
+    selectHtmlElement(el);
+    htmlDragEl = el;
+    htmlDragStart = { x: e.clientX, y: e.clientY };
+    htmlDragUndoPushed = false;
+    e.preventDefault();
+  }
+
+  function onHtmlMouseMove(e) {
+    if (!editMode || editorMode !== 'hand' || !htmlDragEl) return;
+    if (!htmlDragUndoPushed) { pushUndo(); htmlDragUndoPushed = true; }
+    var dx = e.clientX - htmlDragStart.x;
+    var dy = e.clientY - htmlDragStart.y;
+    moveHtmlElement(htmlDragEl, dx, dy);
+    htmlDragStart = { x: e.clientX, y: e.clientY };
+    htmlDragEl.classList.add('html-dragging');
+  }
+
+  function onHtmlMouseUp(e) {
+    if (htmlDragEl) {
+      htmlDragEl.classList.remove('html-dragging');
+      htmlDragEl = null;
+    }
+  }
+
+  function onHtmlDblClick(e) {
+    if (!editMode || editorMode !== 'hand') return;
+    // Switch to pencil to edit text on double-click
+    if (isEditableTarget(e.target) && !e.target.closest('svg')) {
+      setEditorMode('pencil');
+      e.target.focus();
+    }
+  }
+
+  // ---- Arrow marker ----
+  function ensureArrowMarker(svg) {
+    if (svg.querySelector('#svg-editor-arrow')) return;
+    var defs = svg.querySelector('defs');
+    if (!defs) { defs = document.createElementNS(NS, 'defs'); svg.insertBefore(defs, svg.firstChild); }
+    var marker = document.createElementNS(NS, 'marker');
+    marker.setAttribute('id', 'svg-editor-arrow');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '9'); marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '6'); marker.setAttribute('markerHeight', '6');
+    marker.setAttribute('orient', 'auto-start-reverse');
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    path.setAttribute('fill', '#2c3e50');
+    marker.appendChild(path);
+    defs.appendChild(marker);
+  }
+
+  function cancelAddMode() {
+    addingType = null; drawStart = null;
+    document.body.style.cursor = '';
+    document.querySelectorAll('.svg-add-bar button').forEach(function(b) { b.classList.remove('adding'); });
+    document.querySelectorAll('#_tmpDraw').forEach(function(e) { if (e.parentNode) e.parentNode.removeChild(e); });
+  }
+
+  function finishPath() {
+    var p = document.querySelector('#_tmpPath');
+    if (p && pathPoints.length >= 2) { p.removeAttribute('id'); selectSvgElement(p); }
+    else if (p && p.parentNode) { p.parentNode.removeChild(p); }
+    pathPoints = [];
+  }
+
+  // ---- Global add text ----
+  // IMPORTANT: do NOT use `transform: translate(-50%, -50%)` for centering.
+  // moveHtmlElement parses transforms with regex `translate(Npx, Npx)` and
+  // will clobber any percentage-based translate, causing the element to jump
+  // by half its own size on first drag. Instead we position with plain px
+  // `left`/`top` computed from the slide rect after append.
+  window.globalAddText = function() {
+    var txt = prompt('输入要添加的文字:', '新文字');
+    if (!txt) return;
+    pushUndo();
+    var activeSlide = document.querySelector('.slide.active');
+    if (!activeSlide) return;
+    var div = document.createElement('div');
+    div.style.cssText = 'font-size:20px;color:#2c3e50;position:absolute;left:0;top:0;text-align:center;z-index:10;white-space:nowrap;padding:4px 8px;';
+    div.textContent = txt;
+    // Ensure slide has position relative for absolute positioning
+    if (getComputedStyle(activeSlide).position === 'static') activeSlide.style.position = 'relative';
+    activeSlide.appendChild(div);
+    // Measure now that the div is in the DOM, then center via px
+    var sr = activeSlide.getBoundingClientRect();
+    var dr = div.getBoundingClientRect();
+    div.style.left = Math.round(sr.width / 2 - dr.width / 2) + 'px';
+    div.style.top  = Math.round(sr.height / 2 - dr.height / 2) + 'px';
+    if (editorMode === 'pencil') div.setAttribute('contenteditable', 'true');
+    selectHtmlElement(div);
+    showToast('已添加文字');
+  };
+
+  // ---- Delete selected ----
+  window.editorDeleteSelected = function() {
+    if (!selectedEl) return;
+    pushUndo();
+    var el = selectedEl;
+    var parent = el.parentNode;
+    editorDeselect();
+    if (parent) parent.removeChild(el);
+    showToast('已删除');
+  };
+
+  // ---- Duplicate ----
+  window.editorDuplicate = function() {
+    if (!selectedEl) return;
+    pushUndo();
+    var clone = selectedEl.cloneNode(true);
+    if (selectedIsSvg) {
+      selectedEl.parentNode.appendChild(clone);
+      moveSvgElement(clone, 15, 15);
+      selectSvgElement(clone);
+    } else {
+      selectedEl.parentNode.appendChild(clone);
+      moveHtmlElement(clone, 15, 15);
+      selectHtmlElement(clone);
+    }
+  };
+
+  window.svgBringForward = function() {
+    if (!selectedEl || !selectedIsSvg) return;
+    pushUndo();
+    var next = selectedEl.nextElementSibling;
+    if (next && next !== selectionRect) selectedEl.parentNode.insertBefore(next, selectedEl);
+  };
+
+  window.svgSendBackward = function() {
+    if (!selectedEl || !selectedIsSvg) return;
+    pushUndo();
+    var prev = selectedEl.previousElementSibling;
+    if (prev) selectedEl.parentNode.insertBefore(selectedEl, prev);
+  };
+
+  // ---- Lock/unlock element ----
+  window.editorToggleLock = function() {
+    if (!selectedEl) return;
+    pushUndo();
+    var isLocked = selectedEl.classList.contains('editor-locked');
+    if (isLocked) {
+      selectedEl.classList.remove('editor-locked');
+      selectedEl.style.pointerEvents = '';
+      showToast('🔓 已解锁');
+    } else {
+      selectedEl.classList.add('editor-locked');
+      selectedEl.style.pointerEvents = 'none';
+      showToast('🔒 已固定');
+    }
+    var lockBtn = document.getElementById('lockBtn');
+    if (lockBtn) lockBtn.textContent = isLocked ? '🔒 固定' : '🔓 解锁';
+  };
+
+  // ---- Multi-select (Shift+Click) ----
+  var multiSelected = []; // array of elements
+
+  function addToMultiSelect(el) {
+    if (multiSelected.indexOf(el) >= 0) return;
+    multiSelected.push(el);
+    if (el.closest && el.closest('svg')) {
+      el.classList.add('svg-multi-selected');
+    } else {
+      el.classList.add('html-selected');
+    }
+  }
+
+  function clearMultiSelect() {
+    multiSelected.forEach(function(el) {
+      el.classList.remove('svg-multi-selected', 'html-selected');
+    });
+    multiSelected = [];
+  }
+
+  window.editorGroupSelected = function() {
+    if (multiSelected.length < 2) { showToast('请先 Shift+点击 多选元素'); return; }
+    // Only group SVG elements in the same SVG
+    var svg = multiSelected[0].closest('svg');
+    if (!svg) { showToast('只能组合 SVG 元素'); return; }
+    var allInSameSvg = multiSelected.every(function(el) { return el.closest('svg') === svg; });
+    if (!allInSameSvg) { showToast('只能组合同一个 SVG 内的元素'); return; }
+
+    pushUndo();
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'editor-group');
+    // Insert group before first element
+    svg.insertBefore(g, multiSelected[0]);
+    multiSelected.forEach(function(el) {
+      el.classList.remove('svg-multi-selected');
+      g.appendChild(el);
+    });
+    clearMultiSelect();
+    selectSvgElement(g);
+    showToast('已组合 ' + g.children.length + ' 个元素');
+  };
+
+  window.editorUngroupSelected = function() {
+    if (!selectedEl || selectedEl.tagName.toLowerCase() !== 'g') {
+      showToast('请先选中一个组合'); return;
+    }
+    pushUndo();
+    var g = selectedEl;
+    var parent = g.parentNode;
+    var next = g.nextSibling;
+    while (g.firstChild) {
+      parent.insertBefore(g.firstChild, next);
+    }
+    parent.removeChild(g);
+    editorDeselect();
+    showToast('已解组');
+  };
+
+  // ---- Dynamic line drawing ----
+  // Add 'dashAnim' type to SVG add bar
+  window.svgAddMode = function(type) {
+    if (editorMode !== 'pencil') setEditorMode('pencil');
+    if (addingType === type) { cancelAddMode(); return; }
+    if (addingType === 'path') finishPath();
+    cancelAddMode();
+    addingType = type;
+    document.body.style.cursor = 'crosshair';
+    var btn = document.getElementById('svgAdd' + type.charAt(0).toUpperCase() + type.slice(1));
+    if (btn) btn.classList.add('adding');
+  };
+
+  // ---- Keyboard shortcuts ----
+  document.addEventListener('keydown', function(e) {
+    if (!editMode) return;
+
+    // Ctrl+Z undo, Ctrl+Y redo
+    if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
+      e.preventDefault(); editorUndo(); return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || e.key === 'Y')) {
+      e.preventDefault(); editorRedo(); return;
+    }
+
+    // Ctrl+G group, Ctrl+Shift+G ungroup
+    if ((e.ctrlKey || e.metaKey) && e.key === 'g' && !e.shiftKey) {
+      e.preventDefault(); editorGroupSelected(); return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'G' || (e.key === 'g' && e.shiftKey))) {
+      e.preventDefault(); editorUngroupSelected(); return;
+    }
+
+    // Path finish
+    if (addingType === 'path' && (e.key === 'Escape' || e.key === 'Enter')) {
+      finishPath(); cancelAddMode(); return;
+    }
+
+    // Delete selected
+    if (selectedEl && (e.key === 'Delete' || e.key === 'Backspace')) {
+      if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+      if (document.querySelector('[contenteditable]:focus')) return;
+      e.preventDefault();
+      editorDeleteSelected();
+      return;
+    }
+
+    // Escape to deselect
+    if (e.key === 'Escape' && selectedEl && !addingType) {
+      editorDeselect(); clearMultiSelect(); return;
+    }
+
+    // H = hand, V = pencil
+    if (e.key === 'h' || e.key === 'H') {
+      if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.getAttribute('contenteditable'))) return;
+      setEditorMode('hand');
+    }
+    if (e.key === 'v' || e.key === 'V') {
+      if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.getAttribute('contenteditable'))) return;
+      setEditorMode('pencil');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

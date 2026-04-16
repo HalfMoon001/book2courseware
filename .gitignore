@@ -1,0 +1,13 @@
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+*.tar.gz
+*.zip
+
+# 教案原文件 / 课本 PDF / 个人草稿 —— 永远不要 commit
+教案/
+课本/
+plans/
+*.pdf
+*.docx

@@ -1,0 +1,24 @@
+<!--
+  填空练习页 · 仅用于"必背"知识点
+  每个空用 <span class="blank" data-answer="...">...</span>
+  点击 blank 切换显示答案；底部按钮一键揭示所有。
+  占位符：
+    {{SLIDE_INDEX}}    slide 编号
+    {{TITLE}}          页标题
+    {{BLANK_CONTENT}}  含 .blank 的内容，支持 <br>
+
+  示例 BLANK_CONTENT：
+    1. 光合作用的原料是<span class="blank" data-answer="二氧化碳">二氧化碳</span>和<span class="blank" data-answer="水">水</span>。<br>
+    2. 反应场所是<span class="blank" data-answer="叶绿体">叶绿体</span>。
+-->
+<div class="slide" data-slide="{{SLIDE_INDEX}}">
+  <div class="slide-title">{{TITLE}}</div>
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="info-card card-blue" style="font-size:24px;line-height:2;">
+      {{BLANK_CONTENT}}
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button onclick="revealAllBlanks(this)" style="padding:10px 30px;border:2px dashed var(--red);background:rgba(224,107,107,0.05);border-radius:20px;font-family:var(--font-title);font-size:20px;color:var(--red);cursor:pointer;">✨ 显示所有答案</button>
+    </div>
+  </div>
+</div>
